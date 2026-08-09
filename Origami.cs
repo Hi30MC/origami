@@ -17,7 +17,7 @@ public class Origami: QuintessentialMod {
         Glyphs.LoadParts();
         if (NeuvolicsLoaded) {
             ImportManager.ImportNeuvolics();
-            QApi.AddPuzzlePermission(TranslationPermission, "Glyph of Transation", "Origami");
+            QApi.AddPuzzlePermission(TranslationPermission, "Glyph of Translation", "Origami");
         }
         GlyphLUT.GenerateLUTs();
         Logger.Log(GlyphLUT.TranslationLUT);
