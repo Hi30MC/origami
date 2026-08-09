@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "W347QXd4suJ4BjOc4woNAfdxs9d/xMSGqcxjxHVHr1AJwHuMqcuqhSWtHUwvdN73EPeXImWs/oAIhzrYQrnNyA==",
+  "dgSpecHash": "/Yy884xTVMk=",
   "success": true,
-  "projectFilePath": "/home/ad/Documents/code/origami/origami.csproj",
+  "projectFilePath": "/home/zephyr/Documents/code/origami/origami.csproj",
   "expectedPackageFiles": [
-    "/home/ad/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.3/microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
-    "/home/ad/.nuget/packages/microsoft.netframework.referenceassemblies.net452/1.0.3/microsoft.netframework.referenceassemblies.net452.1.0.3.nupkg.sha512"
+    "/home/zephyr/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.3/microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "/home/zephyr/.nuget/packages/microsoft.netframework.referenceassemblies.net452/1.0.3/microsoft.netframework.referenceassemblies.net452.1.0.3.nupkg.sha512"
   ],
   "logs": []
 }

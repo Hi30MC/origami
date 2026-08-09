@@ -11,14 +11,16 @@ public static class GlyphLUT {
 
     public static void GenerateTranslationLUT() {
         if (Origami.NeuvolicsLoaded) {
-            TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetIridium(), Atoms.AtomType.four);
-            TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetMitrum(), Atoms.AtomType.three);
-            TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetTaceum(), Atoms.AtomType.twenty);
-            TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetAzulum(), Atoms.AtomType.nineteen);
-            TranslationLUT.Add(Atoms.AtomType.four, ImportManager.NeuvolicsAtoms.GetIridium());
-            TranslationLUT.Add( Atoms.AtomType.three, ImportManager.NeuvolicsAtoms.GetMitrum());
-            TranslationLUT.Add( Atoms.AtomType.twenty, ImportManager.NeuvolicsAtoms.GetTaceum());
-            TranslationLUT.Add( Atoms.AtomType.nineteen, ImportManager.NeuvolicsAtoms.GetAzulum());
+            TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetIridium(), Atoms.four);
+            TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetMitrum(), Atoms.three);
+            TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetTaceum(), Atoms.twenty);
+            TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetAzulum(), Atoms.nineteen);
+            TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetZephiron(), Atoms.id);
+            TranslationLUT.Add(Atoms.four, ImportManager.NeuvolicsAtoms.GetIridium());
+            TranslationLUT.Add(Atoms.three, ImportManager.NeuvolicsAtoms.GetMitrum());
+            TranslationLUT.Add(Atoms.twenty, ImportManager.NeuvolicsAtoms.GetTaceum());
+            TranslationLUT.Add(Atoms.nineteen, ImportManager.NeuvolicsAtoms.GetAzulum());
+            TranslationLUT.Add(Atoms.id, ImportManager.NeuvolicsAtoms.GetZephiron());
         }
     }
 }

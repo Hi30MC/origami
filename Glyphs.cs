@@ -16,10 +16,10 @@ public static class Glyphs {
             name: "Glyph of Translation",
             description: "Translates between Neumetals and Orimetals",
             cost: 15,
-            glow: "textures/select/Hi30MC/Origami/triline_glow",
-            stroke: "textures/select/Hi30MC/Origami/triline_stroke",
-            icon: "textures/select/Hi30MC/Origami/triline_glow",
-            hoveredIcon: "textures/select/Hi30MC/Origami/triline_glow",
+            glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triline_glow"),
+            stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triline_stroke"),
+            icon: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triline_glow"),
+            hoveredIcon: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triline_glow"),
             usedHexes: new HexIndex [] {TranslationInput, TranslationNop, TranslationOutput},
             customPermission: Origami.TranslationPermission
         );
@@ -39,7 +39,7 @@ public static class Glyphs {
             int IrisFrame = 15;
             bool AfterIrisOpens = false;
             Molecule RisingAtom = null;
-            Vector2 RisingOffset = uco.field_1984 + class_187.field_1742.method_492(TranslationOutput).Rotate(uco.field_1985);
+            Vector2 RisingOffset = uco.field_1984 + class_187.field_1742.method_492(TranslationOutput).Rotated(uco.field_1985);
             renderer.method_528(class_238.field_1989.field_90.field_228.field_272, TranslationOutput, Vector2.Zero);
 
             if (pss.field_2743) {
@@ -64,17 +64,36 @@ public static class Glyphs {
             PartType type = part.method_1159();
 
             if (type == Translation) {
-                if (first) {
+                if (first)
+                {
                     HexIndex hole = (part.method_1184(TranslationInput));
                     HexIndex iris = (part.method_1184(TranslationOutput));
-                    if (sim.FindAtom(iris).method_1085()) {
-                        return
+                    if (sim.FindAtom(iris).method_1085())
+                    {
+                        return;
                     }
-                    if (!sim.FindAtom(hole).method_99(out AtomReference subject) || subject.field_2281 || subject.field_2282) {
-                        return
+                    Logger.Log("output clear");
+                    if (!sim.FindAtom(hole).method_99(out AtomReference subject) || subject.field_2281 || subject.field_2282)
+                    {
+                        return;
                     }
-                } else {
+                    Logger.Log("input valid");
 
+                    if (!GlyphLUT.TranslationLUT.TryGetValue(subject.field_2280, out AtomType output))
+                    {
+                        Logger.Log("not valid input atom");
+                        return;
+                    }
+                    Logger.Log("output type valid, performing op");
+
+                    Brimstone.API.RemoveAtom(subject);
+                    Brimstone.API.DrawFallingAtom(seb, subject);
+
+                    pss.field_2743 = true;
+                    pss.field_2744 = new AtomType[] { output };
+                }
+                else if (pss.field_2743) {
+                    Brimstone.API.AddAtom(sim, part, TranslationOutput, pss.field_2744[0]);
                 }
             }
         });

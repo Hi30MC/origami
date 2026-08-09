@@ -224,11 +224,19 @@
             <param name="padding">The number of digits each frame possesses, this so the frames are in a sensible order when sorted by name</param>
             <returns>An array of textures representing your animation, missing frames are replaced with "oh no" texture.</returns>
         </member>
+        <member name="M:Brimstone.API.GetLighting(System.String)">
+            <summary>
+            Packages a set of lighting textures to be accurately lit by the engine's lamp.<br/>
+            See also: <seealso cref="M:class_195.method_527(class_126,HexIndex,Vector2,Vector2,System.Single)"/>
+            </summary>
+            <param name="containingFolder">The folder containing the lighting info, usually ending in .lighting</param>
+            <returns>A wrapper that represents a light map.</returns>
+        </member>
         <member name="M:Brimstone.API.GetContentPath(System.String)">
             <summary>
-            searches the mods directory for a folder whose name; excluding the version suffix, matches the argument, and gives the path to the content directory.
+            searches the loaded mods for one whose name matches the argument, and gives the path to the content directory.
             </summary>
-            <param name="modName">The name of folder that contains a quintessential.yaml file, the last section of digits, periods, and underscores in the folder name is ignored.</param>
+            <param name="modName">The name of mod, as given in its' quintessential.yaml file</param>
             <returns>An absolute path to the requested mod's content folder.</returns>
         </member>
         <member name="M:Brimstone.API.GetMod(System.String)">
@@ -294,9 +302,66 @@
             <param name="modName">The name field in the mod's quintessential.yaml file.</param>
             <returns>True if the mod with said name is loaded, and false otherwise.</returns>
         </member>
+        <member name="M:Brimstone.API.HexIndexToVector2(HexIndex)">
+            <summary>
+            Converts a hex offset into a Vector2
+            </summary>
+            <param name="hex">The hex to convert</param>
+            <returns>The converted Vector</returns>
+        </member>
+        <member name="M:Brimstone.API.DrawPartGraphic(class_195,class_256,Vector2,System.Single,Vector2,Vector2)">
+            <summary>
+            Todo: documentation<br />
+            Stol- I mean borrowed from Reductive Metallurgy, thanks Isaac!
+            </summary>
+            <param name="renderer"></param>
+            <param name="tex"></param>
+            <param name="graphicPivot"></param>
+            <param name="graphicAngle"></param>
+            <param name="graphicTranslation"></param>
+            <param name="screenTranslation"></param>
+        </member>
+        <member name="M:Brimstone.API.DrawPartGraphicScaled(class_195,class_256,Vector2,System.Single,Vector2,Vector2,Vector2,Color)">
+            <summary>
+            Todo: documentation<br />
+            Stol- I mean borrowed from Reductive Metallurgy, thanks Isaac!
+            </summary>
+            <param name="renderer"></param>
+            <param name="tex"></param>
+            <param name="graphicPivot"></param>
+            <param name="graphicAngle"></param>
+            <param name="graphicTranslation"></param>
+            <param name="screenTranslation"></param>
+            <param name="scaling"></param>
+            <param name="tint">the color to tint the texture towards</param>
+        </member>
+        <member name="M:Brimstone.API.DrawPartGraphicScaled(class_195,class_256,Vector2,System.Single,Vector2,Vector2,Vector2)">
+            <summary>
+            
+            </summary>
+            <param name="renderer"></param>
+            <param name="tex"></param>
+            <param name="graphicPivot"></param>
+            <param name="graphicAngle"></param>
+            <param name="graphicTranslation"></param>
+            <param name="screenTranslation"></param>
+            <param name="scaling"></param>
+        </member>
+        <member name="M:Brimstone.API.DrawGloss(class_195,class_256,class_256,Vector2,HexIndex,System.Single)">
+            <summary>
+            Draws a texture using mask, mainly used by gloss.<br />
+            Stol- I mean borrowed from Reductive Metallurgy, thanks Isaac!
+            </summary>
+            <param name="renderer">the part context renderer, this is the first parameter of the Quintessental PartRender delegate.</param>
+            <param name="gloss">The base texture to draw</param>
+            <param name="mask">The mask to occult the gloss texture, only the alpha channel is used</param>
+            <param name="offset"></param>
+            <param name="hex"></param>
+            <param name="angle"></param>
+        </member>
         <member name="M:Brimstone.API.AddAtom(Sim,Part,HexIndex,AtomType)">
             <summary>
-            Spawns a new molecule consisting of a single atom.
+            Spawns a new molecule consisting of a single atom.<br />
             See also: <see cref="M:Brimstone.API.AddSmallCollider(Sim,Part,HexIndex)"/>
             </summary>
             <param name="sim">The simulation object.</param>
@@ -306,8 +371,11 @@
         </member>
         <member name="M:Brimstone.API.AddBond(Sim,Part,HexIndex,HexIndex,enum_126,System.Boolean,System.Boolean)">
             <summary>
-            Adds a bond in a molecule.
-            See also: <see cref="M:Brimstone.API.JoinMoleculesAtHexes(Sim,Part,HexIndex,HexIndex)"/>, <see cref="M:Brimstone.API.RemoveBondsRelative(Sim,Part,HexIndex,HexIndex,System.Boolean,System.Boolean)"/>
+            Adds a bond in a molecule given 2 offsets.<br />
+            See also:
+            <see cref="M:Brimstone.API.AddBond(Sim,Molecule,HexIndex,HexIndex,enum_126,System.Boolean,System.Boolean)"/>
+            <see cref="M:Brimstone.API.JoinMoleculesAtHexes(Sim,Part,HexIndex,HexIndex)"/>,
+            <see cref="M:Brimstone.API.RemoveBondsRelative(Sim,Part,HexIndex,HexIndex,System.Boolean,System.Boolean)"/>
             </summary>
             <param name="sim">The simulation object.</param>
             <param name="part">The part <paramref name="offset1"/> and <paramref name="offset2"/> are relative to</param>
@@ -322,9 +390,22 @@
             Idempotent: The bond already existed, or the existing bond can't coexist with the new one.
             Success: The bond was successfully added.</returns>
         </member>
+        <member name="M:Brimstone.API.AddBond(Sim,Molecule,HexIndex,HexIndex,enum_126,System.Boolean,System.Boolean)">
+            <summary>
+            Adds a bond to a molecule givenn the molecule and absolute positons.
+            </summary>
+            <param name="sim">The simulation object.</param>
+            <param name="subject">The molecule which this bond will be applied</param>
+            <param name="h1"></param>
+            <param name="h2"></param>
+            <param name="bt"></param>
+            <param name="playAnimation"></param>
+            <param name="playSound"></param>
+            <returns></returns>
+        </member>
         <member name="M:Brimstone.API.AddSmallCollider(Sim,Part,HexIndex)">
             <summary>
-            Spawns a small atom collider, to represent the top of a proxy emerging from an iris.
+            Spawns a small atom collider, to represent the top of a proxy emerging from an iris.<br />
             See also: <see cref="M:Brimstone.API.AddAtom(Sim,Part,HexIndex,AtomType)"/>
             Borrowed from TrueAn.
             </summary>
@@ -406,6 +487,7 @@
         <member name="M:Brimstone.API.JoinMoleculesAtHexes(Sim,Part,HexIndex,HexIndex)">
             <summary>
             Causes two separate molecules to become one, and move together as a group.
+            This method is obsolete, please use <see cref="M:Brimstone.API.JoinMoleculesAtHexes(Sim,Part,HexIndex,HexIndex,Maybe{Molecule}@)"/>
             </summary>
             <param name="sim">The simulation object.</param>
             <param name="part">The part <paramref name="offset1"/> and <paramref name="offset2"/> are relative to.</param>
@@ -415,13 +497,38 @@
             Idempotent: Both positions where occupied by the same molecule.
             Success: The molecules at those two locations are now combined.</returns>
         </member>
+        <member name="M:Brimstone.API.JoinMoleculesAtHexes(Sim,Part,HexIndex,HexIndex,Maybe{Molecule}@)">
+            <summary>
+            Causes two separate molecules to become one, and move together as a group.
+            </summary>
+            <param name="sim">The simulation object.</param>
+            <param name="part">The part <paramref name="offset1"/> and <paramref name="offset2"/> are relative to.</param>
+            <param name="offset1">The position of an atom in one molecule.</param>
+            <param name="offset2">The position of an atom in a different molecule.</param>
+            <param name="joined">The joined molecule</param>
+            <returns>Failure: A molecule wasn't present in one of the locations.
+            Idempotent: Both positions where occupied by the same molecule.
+            Success: The molecules at those two locations are now combined.</returns>
+        </member>
         <member name="M:Brimstone.API.JoinMolecules(Sim,Molecule,Molecule)">
+            <summary>
+            Causes two separate molecules to become one, and move together as a group.<br/>
+            This method is obsolete, please use <see cref="M:Brimstone.API.JoinMolecules(Sim,Molecule,Molecule,Molecule@)"/>
+            </summary>
+            <param name="sim">The simulation object</param>
+            <param name="molecule1">A molecule to be joined</param>
+            <param name="molecule2">A molecule to be joined</param>
+            <returns>Idempotent: If the two molecules are the same.
+            Success: The molecules are now combined.</returns>
+        </member>
+        <member name="M:Brimstone.API.JoinMolecules(Sim,Molecule,Molecule,Molecule@)">
             <summary>
             Causes two separate molecules to become one, and move together as a group.
             </summary>
             <param name="sim">The simulation object</param>
             <param name="molecule1">A molecule to be joined</param>
             <param name="molecule2">A molecule to be joined</param>
+            <param name="joined">The joined molecule</param>
             <returns>Idempotent: If the two molecules are the same.
             Success: The molecules are now combined.</returns>
         </member>
@@ -454,7 +561,7 @@
         </member>
         <member name="M:Brimstone.API.RemoveBondsRelative(Sim,Part,HexIndex,HexIndex,System.Boolean,System.Boolean)">
             <summary>
-            Removes a bond in a molecule between two hexes.
+            Removes a bond in a molecule between two hexes.<br />
             This can create a "disjoint molecule", call <see cref="M:Brimstone.API.ForceRecomputeBonds(Molecule)"/> to tell the game to separate it.
             </summary>
             <param name="sim">The simulation object.</param>

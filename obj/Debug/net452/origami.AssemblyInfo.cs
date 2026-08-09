@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("origami")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdf71256f1571209db6ae51483ba97f769ef78df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd398bc29fc5dfd6efd5fe6e63ae20ecba82ec38")]
 [assembly: System.Reflection.AssemblyProductAttribute("origami")]
 [assembly: System.Reflection.AssemblyTitleAttribute("origami")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
