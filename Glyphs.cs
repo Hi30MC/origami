@@ -73,6 +73,8 @@ public static class Glyphs {
                     if (!sim.FindAtom(hole).method_99(out AtomReference subject) || subject.field_2281 || subject.field_2282) {
                         return
                     }
+                } else {
+
                 }
             }
         });
