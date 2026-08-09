@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/ad/Documents/code/origami/origami.csproj": {}
+  },
+  "projects": {
+    "/home/ad/Documents/code/origami/origami.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ad/Documents/code/origami/origami.csproj",
+        "projectName": "origami",
+        "projectPath": "/home/ad/Documents/code/origami/origami.csproj",
+        "packagesPath": "/home/ad/.nuget/packages/",
+        "outputPath": "/home/ad/Documents/code/origami/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ad/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net452"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net452": {
+            "targetAlias": "net452",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net452": {
+          "targetAlias": "net452",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.129/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+Name: Origami
+Version: 0.0.1
+DLL: "origami.dll"
+Dependencies:
+  - Name: Quintessential
+    Version: 0.5.4
+  - Name: Brimstone
+    Version: 2.0.1
