@@ -102,6 +102,8 @@ Below are reference tables for the various glyphs whose behaviour may be hard to
 
 ### Translated Cayley table with names of atoms instead of numbers
 
+The rows are the left input (a) and the columns are the right input (b). This table computes A(a,b).
+
 |      |  Rei | Naz. | Rey. | Chr. | Zar. | Iaso | Tano | Maru | Hom. | Lono |  Lua |  Tao |
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |  Rei |  Rei | Naz. | Rey. | Chr. | Zar. | Iaso | Tano | Maru | Hom. | Lono |  Lua |  Tao |
