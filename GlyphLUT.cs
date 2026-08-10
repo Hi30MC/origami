@@ -5,11 +5,15 @@ namespace Origami;
 
 public static class GlyphLUT {
     public static Dictionary<Tuple<AtomType, AtomType>, AtomType> CompositionLUT = new();
+    public static Dictionary<Tuple<AtomType, AtomType, AtomType>, AtomType> HighRetrievalLUT = new();
+    public static Dictionary<Tuple<AtomType, AtomType>, AtomType> LowRetrievalLUT = new();
     public static Dictionary<AtomType, AtomType> TranslationLUT = new();
 
     public static void GenerateLUTs() {
-        GenerateTranslationLUT();
         GenerateCompositionLUT();
+        GenerateHighRetievalLUT();
+        GenerateLowRetrievalLUT();
+        GenerateTranslationLUT();
     }
 
     public static void GenerateCompositionLUT() {
@@ -168,6 +172,74 @@ public static class GlyphLUT {
         CompositionLUT.Add(new Tuple<AtomType, AtomType>(Atoms.twentythree, Atoms.nineteen),    Atoms.eight);
         CompositionLUT.Add(new Tuple<AtomType, AtomType>(Atoms.twentythree, Atoms.twenty),      Atoms.twelve);
         CompositionLUT.Add(new Tuple<AtomType, AtomType>(Atoms.twentythree, Atoms.twentythree), Atoms.id);
+    }
+
+    public static void GenerateHighRetievalLUT() {
+        //seven, sixteen, twentythree
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.seven, Atoms.sixteen, Atoms.twentythree), Atoms.id);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.seven, Atoms.twentythree, Atoms.sixteen), Atoms.id);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.sixteen, Atoms.seven, Atoms.twentythree), Atoms.id);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.sixteen, Atoms.twentythree, Atoms.seven), Atoms.id);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.twentythree, Atoms.sixteen, Atoms.seven), Atoms.id);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.twentythree, Atoms.seven, Atoms.sixteen), Atoms.id);
+
+        //id, sixteen, twentythree
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.id, Atoms.sixteen, Atoms.twentythree), Atoms.seven);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.id, Atoms.twentythree, Atoms.sixteen), Atoms.seven);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.sixteen, Atoms.id, Atoms.twentythree), Atoms.seven);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.sixteen, Atoms.twentythree, Atoms.id), Atoms.seven);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.twentythree, Atoms.sixteen, Atoms.id), Atoms.seven);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.twentythree, Atoms.id, Atoms.sixteen), Atoms.seven);
+
+        //id, seven, twentythree
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.id, Atoms.seven, Atoms.twentythree), Atoms.sixteen);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.id, Atoms.twentythree, Atoms.seven), Atoms.sixteen);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.seven, Atoms.id, Atoms.twentythree), Atoms.sixteen);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.seven, Atoms.twentythree, Atoms.id), Atoms.sixteen);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.twentythree, Atoms.seven, Atoms.id), Atoms.sixteen);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.twentythree, Atoms.id, Atoms.seven), Atoms.sixteen);
+
+        //id, sixteen, twentythree
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.id, Atoms.sixteen, Atoms.seven), Atoms.twentythree);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.id, Atoms.seven, Atoms.sixteen), Atoms.twentythree);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.sixteen, Atoms.id, Atoms.seven), Atoms.twentythree);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.sixteen, Atoms.seven, Atoms.id), Atoms.twentythree);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.seven, Atoms.sixteen, Atoms.id), Atoms.twentythree);
+        HighRetrievalLUT.Add(new Tuple<AtomType, AtomType, AtomType>(Atoms.seven, Atoms.id, Atoms.sixteen), Atoms.twentythree);
+    }
+
+    public static void GenerateLowRetrievalLUT() {
+        //id, three, four
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.id, Atoms.three), Atoms.four);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.three, Atoms.id), Atoms.four);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.id, Atoms.four), Atoms.three);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.four, Atoms.id), Atoms.three);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.four, Atoms.three), Atoms.id);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.three, Atoms.four), Atoms.id);
+
+        //id, eight, twelve
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.id, Atoms.eight), Atoms.twelve);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.eight, Atoms.id), Atoms.twelve);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.id, Atoms.twelve), Atoms.eight);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.twelve, Atoms.id), Atoms.eight);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.twelve, Atoms.eight), Atoms.id);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.eight, Atoms.twelve), Atoms.id);
+
+        //id, eleven, nineteen
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.id, Atoms.eleven), Atoms.nineteen);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.eleven, Atoms.id), Atoms.nineteen);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.id, Atoms.nineteen), Atoms.eleven);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.nineteen, Atoms.id), Atoms.eleven);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.nineteen, Atoms.eleven), Atoms.id);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.eleven, Atoms.nineteen), Atoms.id);
+
+        //id, fifteen, twenty
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.id, Atoms.fifteen), Atoms.twenty);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.fifteen, Atoms.id), Atoms.twenty);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.id, Atoms.twenty), Atoms.fifteen);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.twenty, Atoms.id), Atoms.fifteen);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.twenty, Atoms.fifteen), Atoms.id);
+        LowRetrievalLUT.Add(new Tuple<AtomType, AtomType>(Atoms.fifteen, Atoms.twenty), Atoms.id);
     }
 
     public static void GenerateTranslationLUT() {
