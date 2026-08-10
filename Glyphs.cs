@@ -22,7 +22,7 @@ public static class Glyphs {
         Composition = Brimstone.API.CreateSimpleGlyph(
             ID: "Origami-Composition",
             name: "Glyph of Composition",
-            description: "Composes two Orimetals according to the Cayley graph of A₄",
+            description: "Composes two Orimetals according to the Cayley graph of A4",
             cost: 10,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triple_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triple_stroke"),
@@ -52,10 +52,8 @@ public static class Glyphs {
             class_236 uco = editor.method_1989(part, pos);
             float time = editor.method_504();
 
-            Vector2 pivot = new (123f, 48f);
-            Vector2 offset = new (0f, -1f);
-
-            renderer.method_523(CompositionBase, offset, pivot, 0);
+            Vector2 centre = CompositionBase.method_691();
+            renderer.method_523(CompositionBase, new Vector2(-1, -1), centre, 0f);
 
             renderer.method_530(class_238.field_1989.field_90.field_255.field_293, CompositionInputA, 0);
             renderer.method_530(class_238.field_1989.field_90.field_255.field_293, CompositionInputB, 0);
@@ -87,10 +85,8 @@ public static class Glyphs {
             class_236 uco = editor.method_1989(part, pos);
             float time = editor.method_504();
 
-            Vector2 pivot = new (123f, 48f);
-            Vector2 offset = new (0f, -1f);
-
-            renderer.method_523(TranslationBase, offset, pivot, 0);
+            Vector2 centre = TranslationBase.method_691();
+            renderer.method_523(TranslationBase, new Vector2(-1, -1), centre, 0f);
 
             renderer.method_530(class_238.field_1989.field_90.field_255.field_293, TranslationInput, 0);
 
