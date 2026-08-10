@@ -95,3 +95,36 @@ A(3, 3) = 4
 A(19, 19) = 11
 A(8, 8) = 12
 A(20, 20) = 15
+
+# Reference Tables
+
+Below are reference tables for the various glyphs whose behaviour may be hard to memorise.
+
+### Translated Cayley table with names of atoms instead of numbers
+
+|      |  Rei | Naz. | Rey. | Chr. | Zar. | Iaso | Tano | Maru | Hom. | Lono |  Lua |  Tao |
+|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+|  Rei |  Rei | Naz. | Rey. | Chr. | Zar. | Iaso | Tano | Maru | Hom. | Lono |  Lua |  Tao |
+| Naz. | Naz. | Rey. |  Rei | Iaso | Chr. | Zar. | Maru | Hom. | Tano |  Tao | Lono |  Lua |
+| Rey. | Rey. |  Rei | Naz. | Zar. | Iaso | Chr. | Hom. | Tano | Maru |  Lua |  Tao | Lono |
+| Chr. | Chr. | Tano | Lono |  Rei | Maru |  Lua | Naz. | Zar. |  Tao | Rey. | Iaso | Hom. |
+| Zar. | Zar. | Hom. |  Lua | Rey. | Tano |  Tao |  Rei | Iaso | Lono | Naz. | Chr. | Maru |
+| Iaso | Iaso | Maru |  Tao | Naz. | Hom. | Lono | Rey. | Chr. |  Lua |  Rei | Zar. | Tano |
+| Tano | Tano | Lono | Chr. |  Lua |  Rei | Maru | Zar. |  Tao | Naz. | Hom. | Rey. | Iaso |
+| Maru | Maru |  Tao | Iaso | Lono | Naz. | Hom. | Chr. |  Lua | Rey. | Tano |  Rei | Zar. |
+| Hom. | Hom. |  Lua | Zar. |  Tao | Rey. | Tano | Iaso | Lono |  Rei | Maru | Naz. | Chr. |
+| Lono | Lono | Chr. | Tano | Maru |  Lua |  Rei |  Tao | Naz. | Zar. | Iaso | Hom. | Rey. |
+|  Lua |  Lua | Zar. | Hom. | Tano |  Tao | Rey. | Lono |  Rei | Iaso | Chr. | Maru | Naz. |
+|  Tao |  Tao | Iaso | Maru | Hom. | Lono | Naz. |  Lua | Rey. | Chr. | Zar. | Tano |  Rei |
+
+### Glyph of Translation Table
+
+This is a bijective (both ways) map.
+
+| Neuvolic | Ordinal |
+|:--------:|:-------:|
+| Zephiron |   Rei   |
+|  Mitrum  |  Nazum  |
+|  Iridium |  Reyja  |
+|  Azulum  |   Maru  |
+|  Taceum  |   Lua   |
