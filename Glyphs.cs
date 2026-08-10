@@ -22,7 +22,7 @@ public static class Glyphs {
         Composition = Brimstone.API.CreateSimpleGlyph(
             ID: "Origami-Composition",
             name: "Glyph of Composition",
-            description: "Composes two Orimetals according to the Cayley graph of A4",
+            description: "Composes two ordinals according to the Cayley graph of A4",
             cost: 10,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triple_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triple_stroke"),
@@ -34,7 +34,7 @@ public static class Glyphs {
         Translation = Brimstone.API.CreateSimpleGlyph(
             ID: "Origami-Translation",
             name: "Glyph of Translation",
-            description: "Translates between Neumetals and Orimetals",
+            description: "Translates between neuvolics and ordinals",
             cost: 15,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triline_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triline_stroke"),

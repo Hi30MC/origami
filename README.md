@@ -1,9 +1,36 @@
 # origami
-**Origami** is an Opus Magnum mod based off of the alternating group A₄. It takes the 12 elements and adds four glyphs that act as functions that transmute pairs into elements, as described below. Currently, neither glyphs nor atoms have names, but this will be changed/updated in the future. Glyphs A and B are based off of the [Cayley graph of the alternating group A₄](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>) and Glyphs C and D are based off of various subgroups of A₄. The former two lose one (1) mass per operation while the latter two add one (1) mass per operation. Finally, this mod adds an equivalent to Van Berlo's wheel and at the end of this file we prove an Ex Nihilo construction of the elements.
+**Origami** is an Opus Magnum mod based off of the alternating group A₄. It takes the 12 elements and adds four glyphs that act as functions that transmute pairs into elements, as described below. Currently, some glyphs do not have names, but this will be changed/updated in the future. The Glyph of Composition and Glyph B are based off of the [Cayley graph of the alternating group A₄](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>) and Glyphs C and D are based off of various subgroups of A₄. The former two lose one (1) mass per operation while the latter two add one (1) mass per operation. The Glyph of Translation translates between the Neuvolics family and the Ordinals. Finally, this mod adds an equivalent to Van Berlo's wheel and at the end of this file we prove an Ex Nihilo construction of the elements.
+
+# Dependencies
+
+- Quintessential, latest
+- Brimstone, latest
+
+Optional:
+- Neuvolics, latest
 
 # Atom List
 
-{1, 3, 4, 7, 8, 11, 12, 15, 16, 19, 20, 23}. Will probably be given names eventually.
+We refer internally to the atoms as the following set of numbers:
+
+`{1, 3, 4, 7, 8, 11, 12, 15, 16, 19, 20, 23}`
+
+Externally, they have the Following names and properties:
+
+| Number |    Name    |  Based On  |                   Properties                  |
+|:------:|:----------:|:----------:|:---------------------------------------------:|
+|    1   |     Rei    |     零     | Neutral-type atom                             |
+|    3   |    Nazum   |   Ninazu   | Strong, undeath-type healing                  |
+|    4   |    Reyja   |   Freyja   | Colourful, healing, used in cosmetics         |
+|    7   |   Chronos  |   Chronos  | Time-like, artificial aging                   |
+|    8   |   Zaryan   |    Zarya   | Dull, mildly poisonous, dark                  |
+|   11   |    Iaso    |    Iaso    | Healing, gaseous, used in remedies            |
+|   12   |    Tano    |    Tano    | Weak, globular, long-term poison.             |
+|   15   |    Maru    |    Maru    | Aqueous, blue, strong solvent, slight poison. |
+|   16   | Homonculum | Homonculus | Sacrificial power and strength                |
+|   19   |    Lono    |    Lono    | Growth, fertility (agricultural)              |
+|   20   |     Lua    |     Lua    | Destruction, poison, fluid                    |
+|   23   |     Tao    |  Tao(ism)  | Regulation                                    |
 
 # Function List
 
@@ -24,6 +51,16 @@ B: takes f, g as inputs, h as a bowl, then outputs B(f, g; h).
 C: takes f, g, h as bowls, outputs C(f, g, h).
 
 D: takes f, g as bowls, outputs D(f, g).
+
+E: translates using the following table as a bijective map:
+
+| Neuvolic | Ordinal |
+|:--------:|:-------:|
+| Zephiron |   Rei   |
+|  Mitrum  |  Nazum  |
+|  Iridium |  Reyja  |
+|  Azulum  |   Maru  |
+|  Taceum  |   Lua   |
 
 # The Wheel
 
