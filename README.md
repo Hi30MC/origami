@@ -17,20 +17,20 @@ We refer internally to the atoms as the following set of numbers:
 
 Externally, they have the Following names and properties:
 
-| Number |    Name    |  Based On  |                   Properties                  |
-|:------:|:----------:|:----------:|:---------------------------------------------:|
-|    1   |     Rei    |     零     | Neutral-type atom                             |
-|    3   |    Nazum   |   Ninazu   | Strong, undeath-type healing                  |
-|    4   |    Reyja   |   Freyja   | Colourful, healing, used in cosmetics         |
-|    7   |   Chronos  |   Chronos  | Time-like, artificial aging                   |
-|    8   |   Zaryan   |    Zarya   | Dull, mildly poisonous, dark                  |
-|   11   |    Iaso    |    Iaso    | Healing, gaseous, used in remedies            |
-|   12   |    Tano    |    Tano    | Weak, globular, long-term poison.             |
-|   15   |    Maru    |    Maru    | Aqueous, blue, strong solvent, slight poison. |
-|   16   | Homonculum | Homonculus | Sacrificial power and strength                |
-|   19   |    Lono    |    Lono    | Growth, fertility (agricultural)              |
-|   20   |     Lua    |     Lua    | Destruction, poison, fluid                    |
-|   23   |     Tao    |  Tao(ism)  | Regulation                                    |
+| Number |    Name    | Abbr. | Verbal Abbrev. |  Based On  |                   Properties                  |
+|:------:|:----------:|:-----:|:--------------:|:----------:|:---------------------------------------------:|
+|    1   |     Rei    |  Rei  |       Rei      |     零     | Neutral-type atom                             |
+|    3   |    Nazum   |  Naz. |       Naz      |   Ninazu   | Strong, undeath-type healing                  |
+|    4   |    Reyja   |  Rea. |       Rea      |   Freyja   | Colourful, healing, used in cosmetics         |
+|    7   |   Chronos  |  Chr. |      Chron     |   Chronos  | Time-like, artificial aging                   |
+|    8   |   Zaryan   |  Zar. |       Zar      |    Zarya   | Dull, mildly poisonous, dark                  |
+|   11   |    Iaso    |  Iaso |       Ia       |    Iaso    | Healing, gaseous, used in remedies            |
+|   12   |    Tano    |  Tano |    Tan/Tano    |    Tano    | Weak, globular, long-term poison.             |
+|   15   |    Maru    |  Maru |    Mar/Maru    |    Maru    | Aqueous, blue, strong solvent, slight poison. |
+|   16   | Homonculum |  Hom. |    Hom/Homon   | Homonculus | Sacrificial power and strength                |
+|   19   |    Lono    |  Lono |    Lon/Lono    |    Lono    | Growth, fertility (agricultural)              |
+|   20   |     Lua    |  Lua  |       Lua      |     Lua    | Destruction, poison, fluid                    |
+|   23   |     Tao    |  Tao  |       Tao      |  Tao(ism)  | Regulation                                    |
 
 # Function List
 
