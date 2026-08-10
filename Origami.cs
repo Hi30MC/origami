@@ -22,9 +22,9 @@ public class Origami: QuintessentialMod {
         Glyphs.LoadParts();
 
         QApi.AddPuzzlePermission(CompositionPermission, "Glyph of Composition", "Origami");
-        QApi.AddPuzzlePermission(AugmentationPermission, "Glyph of Augmented Composition", "Origami");
-        QApi.AddPuzzlePermission(HighRegenerationPermission, "Glyph of High Regeneration", "Origami");
-        QApi.AddPuzzlePermission(LowRegenerationPermission, "Glyph of Low Regeneration", "Origami");
+        QApi.AddPuzzlePermission(AugmentationPermission, "Glyph of Aug. Comp.", "Origami");
+        QApi.AddPuzzlePermission(HighRegenerationPermission, "Glyph of High Regen.", "Origami");
+        QApi.AddPuzzlePermission(LowRegenerationPermission, "Glyph of Low Regen.", "Origami");
 
         if (NeuvolicsLoaded) {
             ImportManager.ImportNeuvolics();
