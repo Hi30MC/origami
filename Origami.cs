@@ -7,6 +7,7 @@ public class Origami: QuintessentialMod {
     public const string HighRegenerationPermission = "Origami:HighRegeneration";
     public const string LowRegenerationPermission = "Origami:LowRegeneration";
     public const string TranslationPermission = "Origami:Translation";
+    public const string FlemmingPermission = "Origami:Flemming";
 
     public static bool NeuvolicsLoaded = Brimstone.API.IsModLoaded("Neuvolics");
 
@@ -20,11 +21,13 @@ public class Origami: QuintessentialMod {
     public override void LoadPuzzleContent() {
         Atoms.LoadAtoms();
         Glyphs.LoadParts();
+        Wheel.LoadWheel();
 
         QApi.AddPuzzlePermission(CompositionPermission, "Glyph of Composition", "Origami");
         QApi.AddPuzzlePermission(AugmentationPermission, "Glyph of Aug. Comp.", "Origami");
         QApi.AddPuzzlePermission(HighRegenerationPermission, "Glyph of High Regen.", "Origami");
         QApi.AddPuzzlePermission(LowRegenerationPermission, "Glyph of Low Regen.", "Origami");
+        QApi.AddPuzzlePermission(FlemmingPermission, "Flemming's Wheel", "Origami");
 
         if (NeuvolicsLoaded) {
             ImportManager.ImportNeuvolics();
