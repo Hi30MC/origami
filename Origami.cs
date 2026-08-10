@@ -16,12 +16,16 @@ public class Origami: QuintessentialMod {
     }
 
     public override void PostLoad() {}
-    public override void Unload() {}
+
+    public override void Unload() {
+        Glyphs.RemoveHooks();
+    }
 
     public override void LoadPuzzleContent() {
         Atoms.LoadAtoms();
-        Glyphs.LoadParts();
         Wheel.LoadWheel();
+        Glyphs.AddHooks();
+        Glyphs.LoadParts();
 
         QApi.AddPuzzlePermission(CompositionPermission, "Glyph of Composition", "Origami");
         QApi.AddPuzzlePermission(AugmentationPermission, "Glyph of Aug. Comp.", "Origami");

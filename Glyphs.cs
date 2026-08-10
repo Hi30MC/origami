@@ -1,6 +1,9 @@
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 using Quintessential;
 using PartType = class_139;
 using System;
+using System.Linq;
 
 namespace Origami;
 
@@ -35,6 +38,54 @@ public static class Glyphs {
 
     public static readonly HexIndex TranslationBowl = new (0,0);
     public static readonly class_256 TranslationBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/single_base");
+
+
+    #region Hooks
+    public static void AddHooks() {
+        Quintessential.Logger.Log("Origami: Hooking");
+        IL.SolutionEditorBase.method_1984 += InjectDrawFlemmingAtom;
+    }
+
+    public static void RemoveHooks() {
+        Quintessential.Logger.Log("Origami: Unhooking");
+        IL.SolutionEditorBase.method_1984 -= InjectDrawFlemmingAtom;
+    }
+
+    internal static void InjectDrawFlemmingAtom(ILContext context)
+        {
+            ILCursor cursor = new(context);
+            if (!cursor.TryGotoNext(MoveType.After,
+                instr => instr.MatchCallvirt("SolutionEditorBase", "method_2015")))
+            {
+                Logger.Log("Origami: Failed to inject draw call (no method_2015 call)");
+                return;
+            }
+
+            if (!cursor.TryGotoNext(MoveType.After,
+                instr => instr.MatchEndfinally()))
+            {
+                Logger.Log("Origami: Fail to inject draw call (no loop end)");
+                return;
+            }
+
+            cursor.Index++;
+            cursor.Emit(OpCodes.Ldarg_0);
+            cursor.Emit(OpCodes.Ldloc_0);
+            cursor.EmitDelegate<Action<SolutionEditorBase, SolutionEditorBase.class_423>>((self, uco) =>
+            {
+                if (self.method_503() != enum_128.Stopped)
+                {
+                    var partList = self.method_502().field_3919;
+                    foreach (var Flemming in partList.Where(x => x.method_1159() == Wheel.Flemming))
+                    {
+                        Wheel.DrawFlemmingAtoms(self, Flemming, uco.field_3959, true);
+                    }
+                }
+            });
+        }
+
+    #endregion
+
 
     public static void LoadParts() {
         Composition = Brimstone.API.CreateSimpleGlyph(
@@ -314,7 +365,7 @@ public static class Glyphs {
                         return;
                     }
 
-                    bowlAtomType = sim.FindAtom(bowl).method_99(out AtomReference temp) ? temp.field_2280 : Atoms.id; // get bowl atom type, if any.
+                    bowlAtomType = sim.FindAtom(bowl).method_99(out AtomReference temp) || Wheel.MaybeFindFlemmingWheelAtom(sim, bowl).method_99(out temp) ? temp.field_2280 : Atoms.id; // get bowl atom type, if any.
 
                     if (!GlyphLUT.CompositionLUT.TryGetValue(new Tuple<AtomType, AtomType>(inputAtomB.field_2280, bowlAtomType), out AtomType temp2)) {
                         return;
@@ -347,13 +398,13 @@ public static class Glyphs {
                     if (sim.FindAtom(iris).method_1085()) { //iris full
                         return;
                     }
-                    if (!sim.FindAtom(bowlA).method_99(out AtomReference bowlAtomA)) { // bowl A empty
+                    if (!sim.FindAtom(bowlA).method_99(out AtomReference bowlAtomA) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlA).method_99(out bowlAtomA) ) { // bowl A empty
                         return;
                     }
-                    if (!sim.FindAtom(bowlB).method_99(out AtomReference bowlAtomB)) { // bowl B empty
+                    if (!sim.FindAtom(bowlB).method_99(out AtomReference bowlAtomB) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlB).method_99(out bowlAtomB) ) { // bowl B empty
                         return;
                     }
-                    if (!sim.FindAtom(bowlC).method_99(out AtomReference bowlAtomC)) { // bowl C empty
+                    if (!sim.FindAtom(bowlC).method_99(out AtomReference bowlAtomC) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlC).method_99(out bowlAtomC) ) { // bowl C empty
                         return;
                     }
 
@@ -377,10 +428,10 @@ public static class Glyphs {
                     if (sim.FindAtom(iris).method_1085()) { //iris full
                         return;
                     }
-                    if (!sim.FindAtom(bowlA).method_99(out AtomReference bowlAtomA)) { // bowl A empty
+                    if (!sim.FindAtom(bowlA).method_99(out AtomReference bowlAtomA) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlA).method_99(out bowlAtomA) ) { // bowl A empty
                         return;
                     }
-                    if (!sim.FindAtom(bowlB).method_99(out AtomReference bowlAtomB)) { // bowl B empty
+                    if (!sim.FindAtom(bowlB).method_99(out AtomReference bowlAtomB) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlB).method_99(out bowlAtomB) ) { // bowl B empty
                         return;
                     }
 
