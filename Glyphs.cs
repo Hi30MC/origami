@@ -56,8 +56,8 @@ public static class Glyphs {
             cost: 20,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/lowc_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/lowc_stroke"),
-            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/composition_icon"),
-            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/composition_icon"),
+            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/augmentation_icon"),
+            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/augmentation_icon"),
             usedHexes: new HexIndex[] { AugmentationBowl, AugmentationInputA, AugmentationInputB, AugmentationOutput },
             customPermission: Origami.AugmentationPermission
         );
@@ -68,8 +68,8 @@ public static class Glyphs {
             cost: 20,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/highc_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/highc_stroke"),
-            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/composition_icon"),
-            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/composition_icon"),
+            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/high_regeneration_icon"),
+            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/high_regeneration_icon"),
             usedHexes: new HexIndex[] { HighRegenerationBowlA, HighRegenerationBowlB, HighRegenerationBowlC, HighRegenerationOutput },
             customPermission: Origami.HighRegenerationPermission
         );
@@ -80,8 +80,8 @@ public static class Glyphs {
             cost: 15,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/bent_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/bent_stroke"),
-            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/composition_icon"),
-            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/composition_icon"),
+            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/low_regeneration_icon"),
+            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/low_regeneration_icon"),
             usedHexes: new HexIndex[] { LowRegenerationBowlA, LowRegenerationBowlB, LowRegenerationOutput },
             customPermission: Origami.LowRegenerationPermission
         );
