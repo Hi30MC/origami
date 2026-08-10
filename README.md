@@ -1,5 +1,5 @@
 # origami
-**Origami** is an Opus Magnum mod based off of the alternating group A\_4. It takes the 12 elements and adds four glyphs that act as functions that transmute pairs into elements, as described below. Currently, neither glyphs nor atoms have names, but this will be changed/updated in the future. Glyphs A and B are based off of the [Cayley graph of the alternating group A_4](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>) and Glyphs C and D are based off of various subgroups of A\_4. The former two lose one (1) mass per operation while the latter two add one (1) mass per operation. Finally, this mod adds an equivalent to Van Berlo's wheel and at the end of this file we prove an Ex Nihilo construction of the elements.
+**Origami** is an Opus Magnum mod based off of the alternating group A₄. It takes the 12 elements and adds four glyphs that act as functions that transmute pairs into elements, as described below. Currently, neither glyphs nor atoms have names, but this will be changed/updated in the future. Glyphs A and B are based off of the [Cayley graph of the alternating group A₄](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>) and Glyphs C and D are based off of various subgroups of A₄. The former two lose one (1) mass per operation while the latter two add one (1) mass per operation. Finally, this mod adds an equivalent to Van Berlo's wheel and at the end of this file we prove an Ex Nihilo construction of the elements.
 
 # Atom List
 
@@ -7,7 +7,7 @@
 
 # Function List
 
-A(f,g): (f,g) ↦ k where k is according to the [Cayley graph of the alternating group A\_4](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>)
+A(f,g): (f,g) ↦ k where k is according to the [Cayley graph of the alternating group A₄](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>)
 
 B(f, g; h): (f, g, h) ↦ A(f,A(g,h))
 
@@ -35,7 +35,7 @@ The wheel consists of the identity element (1), and elements 11 and 12 in the fo
 </pre>
 # Ex Nihilo
 
-The minimal generating set for A_4 has size two, and thus we only need two non-identity elements to generate all of A_4, and thus all elements in this mod. We derive the following sequence to get to all major elements:
+The minimal generating set for A₄ has size two, and thus we only need two non-identity elements to generate all of A₄, and thus all elements in this mod. We derive the following sequence to get to all major elements:
 
 D(1, 11) = 19
 D(1, 12) = 8
@@ -49,10 +49,10 @@ We then derive the rest of the elements
 Identity:
 A(7, 7) = 1 
 
-Subgroup of type Z_2 x Z_2:
+Subgroup of type Z₂ x Z₂:
 A(7, 16) = 23
 
-Subgroups of type Z_3:
+Subgroups of type Z₃:
 
 A(3, 3) = 4
 A(19, 19) = 11

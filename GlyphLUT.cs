@@ -1,16 +1,25 @@
 using System.Collections.Generic;
+using System;
 
 namespace Origami;
 
 public static class GlyphLUT {
+    public static Dictionary<Tuple<AtomType, AtomType>, AtomType> CompositionLUT = new();
     public static Dictionary<AtomType, AtomType> TranslationLUT = new();
 
     public static void GenerateLUTs() {
         GenerateTranslationLUT();
+        GenerateCompositionLUT();
+    }
+
+    public static void GenerateCompositionLUT() {
+        CompositionLUT.Add(new Tuple<AtomType, AtomType>(Atoms.id, Atoms.three), Atoms.three);
+        CompositionLUT.Add(new Tuple<AtomType, AtomType>(Atoms.three, Atoms.three), Atoms.four);
     }
 
     public static void GenerateTranslationLUT() {
-        if (Origami.NeuvolicsLoaded) {
+        if (Origami.NeuvolicsLoaded)
+        {
             TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetIridium(), Atoms.four);
             TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetMitrum(), Atoms.three);
             TranslationLUT.Add(ImportManager.NeuvolicsAtoms.GetTaceum(), Atoms.twenty);
