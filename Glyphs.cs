@@ -127,25 +127,20 @@ public static class Glyphs {
                     {
                         return;
                     }
-                    Logger.Log("output clear");
                     if (!sim.FindAtom(holeA).method_99(out AtomReference subjectA) || subjectA.field_2281 || subjectA.field_2282)
                     {
                         return;
                     }
-                    Logger.Log("input A valid");
 
                     if (!sim.FindAtom(holeB).method_99(out AtomReference subjectB) || subjectB. field_2281 || subjectB.field_2282)
                     {
                         return;
                     }
-                    Logger.Log("input B valid");
 
                     if (!GlyphLUT.CompositionLUT.TryGetValue(new Tuple<AtomType, AtomType>(subjectA.field_2280, subjectB.field_2280), out AtomType output))
                     {
-                        Logger.Log("not valid input atoms");
                         return;
                     }
-                    Logger.Log("output type valid, performing op");
 
                     Brimstone.API.RemoveAtom(subjectA);
                     Brimstone.API.DrawFallingAtom(seb, subjectA);

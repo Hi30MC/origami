@@ -22,5 +22,6 @@ public class Origami: QuintessentialMod {
             QApi.AddPuzzlePermission(TranslationPermission, "Glyph of Translation", "Origami");
         }
         GlyphLUT.GenerateLUTs();
+        Logger.Log("Origami: Assets loaded :3c");
     }
 }
