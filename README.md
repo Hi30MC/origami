@@ -52,7 +52,7 @@ C: takes f, g, h as bowls, outputs C(f, g, h).
 
 D: takes f, g as bowls, outputs D(f, g).
 
-E: translates using the following table as a bijective map:
+E: translates via bowl using the following table as a bijective map:
 
 | Neuvolic | Ordinal |
 |:--------:|:-------:|
