@@ -14,7 +14,7 @@ public static class Glyphs {
     public static readonly HexIndex CompositionInputA = new(-1, 0);
     public static readonly HexIndex CompositionInputB = new(0, 0);
     public static readonly HexIndex CompositionOutput = new(0, 1);
-    public static readonly class_256 CompositionBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/composition_base");
+    public static readonly class_256 CompositionBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/bent_base");
 
     public static readonly HexIndex AugmentationInputA = new(-1, 0);
     public static readonly HexIndex AugmentationInputB = new(0, 0);
@@ -29,9 +29,9 @@ public static class Glyphs {
     public static readonly class_256 HighRegenerationBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/highc_base");
 
     public static readonly HexIndex LowRegenerationBowlA = new (-1, 0);
-    public static readonly HexIndex LowRegenerationBowlB = new (0, 1);
-    public static readonly HexIndex LowRegenerationOutput = new (0, 0);
-    public static readonly class_256 LowRegenerationBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/low_regeneration_base");
+    public static readonly HexIndex LowRegenerationBowlB = new (0, 0);
+    public static readonly HexIndex LowRegenerationOutput = new (-1, 1);
+    public static readonly class_256 LowRegenerationBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/triple_base");
 
     public static readonly HexIndex TranslationBowl = new (0,0);
     public static readonly class_256 TranslationBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/single_base");
@@ -78,8 +78,8 @@ public static class Glyphs {
             name: "Glyph of Low Regeneration",
             description: "Completes the four groups of three-cycle ordinals. Place two on the bowl and the last of the triple is retrieved from the Aether.",
             cost: 15,
-            glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/bent_glow"),
-            stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/bent_stroke"),
+            glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triple_glow"),
+            stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triple_stroke"),
             icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/low_regeneration_icon"),
             hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/low_regeneration_icon"),
             usedHexes: new HexIndex[] { LowRegenerationBowlA, LowRegenerationBowlB, LowRegenerationOutput },

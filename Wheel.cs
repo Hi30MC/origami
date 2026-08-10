@@ -49,9 +49,9 @@ public static class Wheel
             /*Berlo Atoms*/
             field_1544 = new Dictionary<HexIndex, AtomType>(),
             /*Icon*/
-            field_1547 = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/translation_icon"),
+            field_1547 = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/flemming_icon"),
             /*Hover Icon*/
-            field_1548 = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/translation_icon"),
+            field_1548 = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/flemming_icon"),
             /*Only One Allowed?*/
             field_1552 = true,
             CustomPermissionCheck = perms => perms.Contains(Origami.FlemmingPermission)
