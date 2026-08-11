@@ -11,7 +11,7 @@ namespace Origami;
 // Borrowed from Neuvolics
 public static class Wheel
 {
-    const string OrdinalStateString = "Origami_FlemmingWheelAtoms";
+    const string orimetalStateString = "Origami_FlemmingWheelAtoms";
     const float sixtyDegrees = (float)Math.PI / 3f;
 
     static Molecule FlemmingMolecule()
@@ -37,7 +37,7 @@ public static class Wheel
             /*Name*/
             field_1529 = class_134.method_253("Flemming's Wheel", string.Empty),
             /*Desc*/
-            field_1530 = class_134.method_253("By using Flemming's wheel with the glyphs of regeneration, one can construct all known ordinals.", string.Empty),
+            field_1530 = class_134.method_253("By using Flemming's wheel with the glyphs of regeneration, one can construct all known orimetals.", string.Empty),
             /*Cost*/
             field_1531 = 25,
             /*Type*/
@@ -116,7 +116,7 @@ public static class Wheel
         //seb.field_3935.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(hex), Textures.Soria.Flash, 30f, Vector2.Zero, 0f));
     }
 
-    private static Molecule GetFlemmingWheelAtoms(PartSimState state) => GetFlemmingWheelData(state, OrdinalStateString, FlemmingMolecule());
+    private static Molecule GetFlemmingWheelAtoms(PartSimState state) => GetFlemmingWheelData(state, orimetalStateString, FlemmingMolecule());
 
     static void DrawFlemmingWheel(Part part, Vector2 pos, SolutionEditorBase editor, class_195 renderer)
     {

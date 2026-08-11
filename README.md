@@ -1,5 +1,5 @@
 # origami
-**Origami** is an Opus Magnum mod based off of the alternating group A₄. It takes the 12 elements and adds four glyphs that act as functions that transmute pairs into elements, as described below. Currently, some glyphs do not have names, but this will be changed/updated in the future. The Glyph of Composition and Glyph B are based off of the [Cayley graph of the alternating group A₄](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>) and Glyphs C and D are based off of various subgroups of A₄. The former two lose one (1) mass per operation while the latter two add one (1) mass per operation. The Glyph of Translation translates between the Neuvolics family and the Ordinals. Finally, this mod adds an equivalent to Van Berlo's wheel and at the end of this file we prove an Ex Nihilo construction of the elements.
+**Origami** is an Opus Magnum mod based off of the alternating group A₄. It takes the 12 elements and adds four glyphs that act as functions that transmute pairs into elements, as described below. Currently, some glyphs do not have names, but this will be changed/updated in the future. The Glyph of Composition and Glyph B are based off of the [Cayley graph of the alternating group A₄](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>) and Glyphs C and D are based off of various subgroups of A₄. The former two lose one (1) mass per operation while the latter two add one (1) mass per operation. The Glyph of Translation translates between the Neuvolics family and the orimetals. Finally, this mod adds an equivalent to Van Berlo's wheel and at the end of this file we prove an Ex Nihilo construction of the elements.
 
 # Dependencies
 
@@ -54,7 +54,7 @@ D: takes f, g as bowls, outputs D(f, g).
 
 E: translates via bowl using the following table as a bijective map:
 
-| Neuvolic | Ordinal |
+| Neuvolic | orimetal |
 |:--------:|:-------:|
 | Zephiron |   Rei   |
 |  Mitrum  |  Nazum  |
@@ -123,7 +123,7 @@ The rows are the left input (a) and the columns are the right input (b). This ta
 
 This is a bijective (both ways) map.
 
-| Neuvolic | Ordinal |
+| Neuvolic | orimetal |
 |:--------:|:-------:|
 | Zephiron |   Rei   |
 |  Mitrum  |  Nazum  |

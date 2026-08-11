@@ -8,11 +8,13 @@ using System.Linq;
 namespace Origami;
 
 public static class Glyphs {
+    #region GlyphMeta
     public static PartType Composition;
     public static PartType Augmentation;
     public static PartType HighRegeneration;
     public static PartType LowRegeneration;
     public static PartType Translation;
+    public static PartType Sacrifice;
 
     public static readonly HexIndex CompositionInputA = new(-1, 0);
     public static readonly HexIndex CompositionInputB = new(0, 0);
@@ -39,6 +41,10 @@ public static class Glyphs {
     public static readonly HexIndex TranslationBowl = new (0,0);
     public static readonly class_256 TranslationBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/single_base");
 
+    public static readonly HexIndex SacrificeArm = new(-1, 0);
+    public static readonly HexIndex SacrificeIO = new(0, 0);
+    public static readonly class_256 SacrificeBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/double_base");
+    #endregion
 
     #region Hooks
     public static void AddHooks() {
@@ -86,12 +92,12 @@ public static class Glyphs {
 
     #endregion
 
-
+    #region GlyphInit
     public static void LoadParts() {
         Composition = Brimstone.API.CreateSimpleGlyph(
-            ID: "Origami-Composition",
+            ID: "origami_composition",
             name: "Glyph of Composition",
-            description: "Composes two ordinals according to the Cayley table of A4",
+            description: "Composes two orimetals according to the Cayley table of A4",
             cost: 15,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/bent_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/bent_stroke"),
@@ -101,9 +107,9 @@ public static class Glyphs {
             customPermission: Origami.CompositionPermission
         );
         Augmentation = Brimstone.API.CreateSimpleGlyph(
-            ID: "Origami-Augmentation",
+            ID: "origami_augmentation",
             name: "Glyph of Augmented Composition",
-            description: "Composes two ordinals according to the Cayley table of A4, augmented by the atom in the bowl. This performs C(a,C(b,c)) where C is the Cayley table. If the bowl is empty, the glyph defaults to Rei.",
+            description: "Composes two orimetals according to the Cayley table of A4, augmented by the atom in the bowl. This performs C(a,C(b,c)) where C is the Cayley table. If the bowl is empty, the glyph defaults to Rei.",
             cost: 20,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/lowc_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/lowc_stroke"),
@@ -113,9 +119,9 @@ public static class Glyphs {
             customPermission: Origami.AugmentationPermission
         );
         HighRegeneration = Brimstone.API.CreateSimpleGlyph(
-            ID: "Origami-High-Regeneration",
+            ID: "origami_high_regeneration",
             name: "Glyph of High Regeneration",
-            description: "Completes the group of four dual-cycle ordinals: Rei, Chronos, Homonculum, and Tao. Place three on the bowl and the last of the four is retrieved from the Aether.",
+            description: "Completes the group of four dual-cycle orimetals: Rei, Chronos, Homonculum, and Tao. Place three on the bowl and the last of the four is retrieved from the Aether.",
             cost: 20,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/highc_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/highc_stroke"),
@@ -125,9 +131,9 @@ public static class Glyphs {
             customPermission: Origami.HighRegenerationPermission
         );
         LowRegeneration = Brimstone.API.CreateSimpleGlyph(
-            ID: "Origami-Low-Regeneration",
+            ID: "origami_low_regeneration",
             name: "Glyph of Low Regeneration",
-            description: "Completes the four groups of three-cycle ordinals. Place two on the bowl and the last of the triple is retrieved from the Aether.",
+            description: "Completes the four groups of three-cycle orimetals. Place two on the bowl and the last of the triple is retrieved from the Aether.",
             cost: 15,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triple_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/triple_stroke"),
@@ -137,26 +143,41 @@ public static class Glyphs {
             customPermission: Origami.LowRegenerationPermission
         );
         Translation = Brimstone.API.CreateSimpleGlyph(
-            ID: "Origami-Translation",
+            ID: "origami_translation",
             name: "Glyph of Translation",
-            description: "Translates between neuvolics and ordinals",
+            description: "Translates between neuvolics and orimetals",
             cost: 10,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/single_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/single_stroke"),
             icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/translation_icon"),
             hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/translation_icon"),
-            usedHexes: new HexIndex[] {TranslationBowl},
+            usedHexes: new HexIndex[] { TranslationBowl },
             customPermission: Origami.TranslationPermission
+        );
+        Sacrifice = Brimstone.API.CreateSimpleGlyph(
+            ID: "origami_sacrifice",
+            name: "Glyph of Sacrifice",
+            description: "One can obtain immortality, but it must come at a cost. Minimum requirement: 666 lives (6 mors).",
+            cost: 50,
+            glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/double_glow"),
+            stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/double_stroke"),
+            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/translation_icon"),
+            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/translation_icon"),
+            usedHexes: new HexIndex[] { SacrificeArm, SacrificeIO },
+            customPermission: Origami.SacrificePermission
         );
 
         HighRegeneration.field_1552 = true; // only one!
         LowRegeneration.field_1552 = true; // only one!
+        // not sure if I want one or many...
+        // Sacrifice.field_1552 = true; //only one!
 
         QApi.AddPartTypeToPanel(Composition, false);
         QApi.AddPartTypeToPanel(Augmentation, false);
         QApi.AddPartTypeToPanel(HighRegeneration, false);
         QApi.AddPartTypeToPanel(LowRegeneration, false);
         QApi.AddPartTypeToPanel(Translation, false);
+        QApi.AddPartTypeToPanel(Sacrifice, false);
 
         QApi.AddPartType(Composition, static (part, pos, editor, renderer) => {
             PartSimState pss = editor.method_507().method_481(part);
@@ -297,7 +318,8 @@ public static class Glyphs {
             }
         });
 
-        QApi.AddPartType(Translation, static (part, pos, editor, renderer) => {
+        QApi.AddPartType(Translation, static (part, pos, editor, renderer) =>
+        {
             PartSimState pss = editor.method_507().method_481(part);
             class_236 uco = editor.method_1989(part, pos);
             float time = editor.method_504();
@@ -308,6 +330,46 @@ public static class Glyphs {
             renderer.method_528(class_238.field_1989.field_90.field_170, TranslationBowl, Vector2.Zero);
         });
 
+        QApi.AddPartType(Sacrifice, static (part, pos, editor, renderer) => {
+            PartSimState pss = editor.method_507().method_481(part);
+            class_236 uco = editor.method_1989(part, pos);
+            float time = editor.method_504();
+
+            Vector2 centre = SacrificeBase.method_691();
+            renderer.method_523(SacrificeBase, new Vector2(-1, -1), centre, 0f);
+
+            //draw arm
+            renderer.method_528(class_238.field_1989.field_90.field_253.field_279, SacrificeArm, Vector2.Zero);
+
+            int IrisFrame = 15;
+            bool AfterIrisOpens = false;
+            Molecule RisingAtom = null;
+            Vector2 RisingOffset = uco.field_1984 + class_187.field_1742.method_492(HighRegenerationOutput).Rotated(uco.field_1985);
+            renderer.method_528(class_238.field_1989.field_90.field_228.field_272, HighRegenerationOutput, Vector2.Zero); //draw output under iris
+
+            // iris logic
+            if (pss.field_2743) // if isProcessing
+            {
+                IrisFrame = class_162.method_404((int)(class_162.method_411(1f, -1f, time) * 16f), 0, 15); // LERP iris frames if processing
+                AfterIrisOpens = time > 0.5f;
+                RisingAtom = Molecule.method_1121(pss.field_2744[0]); //singlet atom of 0th held atoms
+                if (!AfterIrisOpens) //iris not fully open
+                {
+                    Editor.method_925(RisingAtom, RisingOffset, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null); //render molecule
+                }
+            }
+
+            renderer.method_529(class_238.field_1989.field_90.field_246[IrisFrame], HighRegenerationOutput, Vector2.Zero); //draw iris with correct frame
+            renderer.method_528(class_238.field_1989.field_90.field_228.field_271, HighRegenerationOutput, Vector2.Zero); //draw output ring above iris
+
+            if (pss.field_2743 && AfterIrisOpens) { //isProcessing, iris fully open
+                Editor.method_925(RisingAtom, RisingOffset, new HexIndex (0, 0), 0f, 1f, time, 1f, false, null); //render molecule
+            }
+
+        });
+        #endregion
+
+        #region GlyphActivate
         QApi.RunDuringCycle(static (sim, part, pss, first) => {
             SolutionEditorBase seb = sim.field_3818;
             PartType type = part.method_1159();
@@ -324,7 +386,7 @@ public static class Glyphs {
                         return;
                     }
 
-                    if (!sim.FindAtom(holeB).method_99(out AtomReference inputAtomB) || inputAtomB. field_2281 || inputAtomB.field_2282) { //invalid hole B
+                    if (!sim.FindAtom(holeB).method_99(out AtomReference inputAtomB) || inputAtomB.field_2281 || inputAtomB.field_2282) { //invalid hole B
                         return;
                     }
 
@@ -361,7 +423,7 @@ public static class Glyphs {
                         return;
                     }
 
-                    if (!sim.FindAtom(holeB).method_99(out AtomReference inputAtomB) || inputAtomB. field_2281 || inputAtomB.field_2282) { //invalid holeB
+                    if (!sim.FindAtom(holeB).method_99(out AtomReference inputAtomB) || inputAtomB.field_2281 || inputAtomB.field_2282) { //invalid holeB
                         return;
                     }
 
@@ -398,13 +460,13 @@ public static class Glyphs {
                     if (sim.FindAtom(iris).method_1085()) { //iris full
                         return;
                     }
-                    if (!sim.FindAtom(bowlA).method_99(out AtomReference bowlAtomA) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlA).method_99(out bowlAtomA) ) { // bowl A empty
+                    if (!sim.FindAtom(bowlA).method_99(out AtomReference bowlAtomA) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlA).method_99(out bowlAtomA)) { // bowl A empty
                         return;
                     }
-                    if (!sim.FindAtom(bowlB).method_99(out AtomReference bowlAtomB) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlB).method_99(out bowlAtomB) ) { // bowl B empty
+                    if (!sim.FindAtom(bowlB).method_99(out AtomReference bowlAtomB) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlB).method_99(out bowlAtomB)) { // bowl B empty
                         return;
                     }
-                    if (!sim.FindAtom(bowlC).method_99(out AtomReference bowlAtomC) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlC).method_99(out bowlAtomC) ) { // bowl C empty
+                    if (!sim.FindAtom(bowlC).method_99(out AtomReference bowlAtomC) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlC).method_99(out bowlAtomC)) { // bowl C empty
                         return;
                     }
 
@@ -428,10 +490,10 @@ public static class Glyphs {
                     if (sim.FindAtom(iris).method_1085()) { //iris full
                         return;
                     }
-                    if (!sim.FindAtom(bowlA).method_99(out AtomReference bowlAtomA) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlA).method_99(out bowlAtomA) ) { // bowl A empty
+                    if (!sim.FindAtom(bowlA).method_99(out AtomReference bowlAtomA) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlA).method_99(out bowlAtomA)) { // bowl A empty
                         return;
                     }
-                    if (!sim.FindAtom(bowlB).method_99(out AtomReference bowlAtomB) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlB).method_99(out bowlAtomB) ) { // bowl B empty
+                    if (!sim.FindAtom(bowlB).method_99(out AtomReference bowlAtomB) && !Wheel.MaybeFindFlemmingWheelAtom(sim, bowlB).method_99(out bowlAtomB)) { // bowl B empty
                         return;
                     }
 
@@ -457,9 +519,10 @@ public static class Glyphs {
                     }
 
                     Brimstone.API.ChangeAtom(bowlAtom, output);
-                    bowlAtom.field_2279.field_2276 = new class_168(seb, 0, (enum_132) 1, bowlAtom.field_2280, class_238.field_1989.field_81.field_614, 30f);
+                    bowlAtom.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowlAtom.field_2280, class_238.field_1989.field_81.field_614, 30f);
                 }
             }
         });
+        #endregion
     }
 }
