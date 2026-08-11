@@ -4,6 +4,8 @@ using Quintessential;
 using PartType = class_139;
 using System;
 using System.Linq;
+using Origami.Util;
+using MonoMod.Utils;
 
 namespace Origami;
 
@@ -41,9 +43,11 @@ public static class Glyphs {
     public static readonly HexIndex TranslationBowl = new (0,0);
     public static readonly class_256 TranslationBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/single_base");
 
-    public static readonly HexIndex SacrificeArm = new(-1, 0);
-    public static readonly HexIndex SacrificeIO = new(0, 0);
+    public static readonly HexIndex SacrificeArm = new(0, 0);
+    public static readonly HexIndex SacrificeIO = new(1, 0);
     public static readonly class_256 SacrificeBase = Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/double_base");
+    public static readonly string SacrificeStateField = "origami_sacrifice_state";
+    public static readonly string SacrificeStateCycle = "origami_sacrifice_cycle";
     #endregion
 
     #region Hooks
@@ -161,15 +165,18 @@ public static class Glyphs {
             cost: 50,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/double_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/double_stroke"),
-            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/translation_icon"),
-            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/translation_icon"),
+            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/sacrifice_icon"),
+            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/sacrifice_icon"),
             usedHexes: new HexIndex[] { SacrificeArm, SacrificeIO },
             customPermission: Origami.SacrificePermission
         );
 
+
         HighRegeneration.field_1552 = true; // only one!
         LowRegeneration.field_1552 = true; // only one!
         // not sure if I want one or many...
+        /*Programmable?*/
+        Sacrifice.field_1533 = true; // programmable
         // Sacrifice.field_1552 = true; //only one!
 
         QApi.AddPartTypeToPanel(Composition, false);
@@ -330,42 +337,123 @@ public static class Glyphs {
             renderer.method_528(class_238.field_1989.field_90.field_170, TranslationBowl, Vector2.Zero);
         });
 
-        QApi.AddPartType(Sacrifice, static (part, pos, editor, renderer) => {
+        // one of the worst reverse-engineerings that I have done (in terms of difficulty). please use this code for your sump-type things...
+        QApi.AddPartType(Sacrifice, static (part, pos, editor, renderer) =>
+        {
+            // Logger.Log("init vars");
             PartSimState pss = editor.method_507().method_481(part);
             class_236 uco = editor.method_1989(part, pos);
             float time = editor.method_504();
 
-            Vector2 centre = SacrificeBase.method_691();
-            renderer.method_523(SacrificeBase, new Vector2(-1, -1), centre, 0f);
-
-            //draw arm
-            renderer.method_528(class_238.field_1989.field_90.field_253.field_279, SacrificeArm, Vector2.Zero);
-
-            int IrisFrame = 15;
-            bool AfterIrisOpens = false;
-            Molecule RisingAtom = null;
-            Vector2 RisingOffset = uco.field_1984 + class_187.field_1742.method_492(HighRegenerationOutput).Rotated(uco.field_1985);
-            renderer.method_528(class_238.field_1989.field_90.field_228.field_272, HighRegenerationOutput, Vector2.Zero); //draw output under iris
-
-            // iris logic
-            if (pss.field_2743) // if isProcessing
+            // Logger.Log("get cycle");
+            var currentCycle = 0;
+            if (editor.method_503() != enum_128.Stopped && editor.GetType() == typeof(SolutionEditorScreen))
             {
-                IrisFrame = class_162.method_404((int)(class_162.method_411(1f, -1f, time) * 16f), 0, 15); // LERP iris frames if processing
-                AfterIrisOpens = time > 0.5f;
-                RisingAtom = Molecule.method_1121(pss.field_2744[0]); //singlet atom of 0th held atoms
-                if (!AfterIrisOpens) //iris not fully open
+                var maybeSim = new DynamicData(editor).Get<Maybe<Sim>>("field_4022");
+                if (maybeSim.method_1085())
                 {
-                    Editor.method_925(RisingAtom, RisingOffset, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null); //render molecule
+                    currentCycle = maybeSim.method_1087().method_1818();
                 }
             }
 
-            renderer.method_529(class_238.field_1989.field_90.field_246[IrisFrame], HighRegenerationOutput, Vector2.Zero); //draw iris with correct frame
-            renderer.method_528(class_238.field_1989.field_90.field_228.field_271, HighRegenerationOutput, Vector2.Zero); //draw output ring above iris
+            // Logger.Log("init dyn");
+            // init dyn
+            var pss_dyn = new DynamicData(pss);
+            var stateOb = pss_dyn.Get(SacrificeStateField);
+            var prevCycleOb = pss_dyn.Get(SacrificeStateCycle);
 
-            if (pss.field_2743 && AfterIrisOpens) { //isProcessing, iris fully open
-                Editor.method_925(RisingAtom, RisingOffset, new HexIndex (0, 0), 0f, 1f, time, 1f, false, null); //render molecule
+            SacrificeState state = new(0b11000000);
+            int prevCycle = 0;
+            if (stateOb != null)
+            {
+                state = (SacrificeState)stateOb;
+            }
+            if (prevCycleOb != null)
+            {
+                prevCycle = (int)prevCycleOb;
             }
 
+            // Logger.Log("update state and dyn");
+            // update state and dyn
+            if (currentCycle > prevCycle || time > 0.5)
+            {
+                state.Update();
+                pss_dyn.Set(SacrificeStateCycle, currentCycle);
+            }
+
+            // Logger.Log("get currState");
+            // currState: has an atom over top of it (or is about to have one above) -> false (open)
+            HexIndex key = part.method_1184(SacrificeIO);
+            state.CurrState = !pss.field_2743; // if we are about to spit a Hom., default is false (open), else true (closed)
+            foreach (Molecule molecule in editor.method_507().method_483().Where(x => x.method_1100().Count == 1)) // foreach one-atom molecule
+            {
+                if (molecule.method_1100().ContainsKey(key)) // if any atom at IO. If you want to condition this, use ...TryGetValue(key, out Atom ioAtom) && <ioAtom condition>
+                {
+                    state.CurrState = false;
+                    break;
+                }
+            }
+            pss_dyn.Set(SacrificeStateField, state); // update dyn with new currState
+
+            bool animate = state.PrevState != state.CurrState; // animate iris if the state has changed; else draw static iris
+
+            // Logger.Log("iris frame gen");
+            // get iris frames
+            int irisFrame = 15; // 15 is closed, 00 is open
+            if (animate)
+            { // transition from closed to open
+                // state.CurrState true: go from 0 to 2 (end closed)
+                // state.CurrState false: go from 1 to -1 (end open)
+                // normally would go from 0 -> 1 and 1 -> 0 but need double speed in standard sim speed, so we extend our LERP to cover double length in same time.
+                irisFrame = class_162.method_404((int)(class_162.method_411(state.CurrState ? 0f : 1f, state.CurrState ? 2f : -1f, time) * 16f), 0, 15);
+            }
+            else
+            {
+                irisFrame = state.CurrState ? 15 : 0; // if true, closed (15), if false open (0)
+            }
+
+            //draw everything!!
+            // Logger.Log("draw start");
+            Molecule RisingHomonculum = Molecule.method_1121(Atoms.sixteen);
+            Molecule RisingMors = Molecule.method_1121(Brimstone.API.VanillaAtoms.mors);
+            Vector2 RisingOffset = uco.field_1984 + class_187.field_1742.method_492(SacrificeIO).Rotated(uco.field_1985);
+
+            // draw base
+            // Logger.Log("draw start");
+            Vector2 centre = SacrificeBase.method_691();
+            renderer.method_523(SacrificeBase, new Vector2(-1, -1), centre, 0f);
+
+            // draw arm, todo: change to indicator
+            renderer.method_528(class_238.field_1989.field_90.field_253.field_279, SacrificeArm, Vector2.Zero);
+            // byte MorsCount = state.MorsCount;
+
+            // underiris
+            renderer.method_528(class_238.field_1989.field_90.field_228.field_272, SacrificeIO, Vector2.Zero); //draw output under iris
+
+            bool AfterIrisOpens = false;
+            if (pss.field_2743)
+            {
+                AfterIrisOpens = time >= 0.5f;
+            }
+
+            // Logger.Log(irisFrame + " " + state.ConsumingMors + " " + pss.field_2743);
+            // Logger.Log("drawBefore");
+            if (!AfterIrisOpens)
+            { // iris not yet open. For the case of both drawing simultaenously, draw mors on top of hom. for first half...
+                if (pss.field_2743) Editor.method_925(RisingHomonculum, RisingOffset, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null); // drawRisingAtom below iris if needed
+                if (state.ConsumingMors) Editor.method_925(RisingMors, RisingOffset, new HexIndex(0, 0), 0f, 1f, 1f - time, 1f, false, null); // drawRisingAtom in reverse after iris
+            }
+
+            // Logger.Log("irisFrame:" + irisFrame);
+            renderer.method_529(class_238.field_1989.field_90.field_246[irisFrame], SacrificeIO, Vector2.Zero); //draw iris with correct frame
+            renderer.method_528(class_238.field_1989.field_90.field_228.field_271, SacrificeIO, Vector2.Zero); //draw output ring above iris
+
+            // Logger.Log("drawAfter");
+            if (AfterIrisOpens)
+            { // iris fully open. ...and draw hom. on top of mors for the second half.
+                if (state.ConsumingMors) Editor.method_925(RisingMors, RisingOffset, new HexIndex(0, 0), 0f, 1f, 1f - time, 1f, false, null); //drawRisingAtom in reverse after iris
+                if (pss.field_2743) Editor.method_925(RisingHomonculum, RisingOffset, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null); // drawRisingAtom after iris if needed
+            }
         });
         #endregion
 
@@ -376,9 +464,9 @@ public static class Glyphs {
 
             if (type == Composition) {
                 if (first) {
-                    HexIndex holeA = (part.method_1184(CompositionInputA));
-                    HexIndex holeB = (part.method_1184(CompositionInputB));
-                    HexIndex iris = (part.method_1184(CompositionOutput));
+                    HexIndex holeA = part.method_1184(CompositionInputA);
+                    HexIndex holeB = part.method_1184(CompositionInputB);
+                    HexIndex iris = part.method_1184(CompositionOutput);
                     if (sim.FindAtom(iris).method_1085()) { //iris full
                         return;
                     }
@@ -409,10 +497,10 @@ public static class Glyphs {
 
             if (type == Augmentation) {
                 if (first) {
-                    HexIndex holeA = (part.method_1184(AugmentationInputA));
-                    HexIndex holeB = (part.method_1184(AugmentationInputB));
-                    HexIndex bowl = (part.method_1184(AugmentationBowl));
-                    HexIndex iris = (part.method_1184(AugmentationOutput));
+                    HexIndex holeA = part.method_1184(AugmentationInputA);
+                    HexIndex holeB = part.method_1184(AugmentationInputB);
+                    HexIndex bowl = part.method_1184(AugmentationBowl);
+                    HexIndex iris = part.method_1184(AugmentationOutput);
                     AtomType bowlAtomType;
 
                     if (sim.FindAtom(iris).method_1085()) { //iris full
@@ -452,10 +540,10 @@ public static class Glyphs {
 
             if (type == HighRegeneration) {
                 if (first) {
-                    HexIndex bowlA = (part.method_1184(HighRegenerationBowlA));
-                    HexIndex bowlB = (part.method_1184(HighRegenerationBowlB));
-                    HexIndex bowlC = (part.method_1184(HighRegenerationBowlC));
-                    HexIndex iris = (part.method_1184(HighRegenerationOutput));
+                    HexIndex bowlA = part.method_1184(HighRegenerationBowlA);
+                    HexIndex bowlB = part.method_1184(HighRegenerationBowlB);
+                    HexIndex bowlC = part.method_1184(HighRegenerationBowlC);
+                    HexIndex iris = part.method_1184(HighRegenerationOutput);
 
                     if (sim.FindAtom(iris).method_1085()) { //iris full
                         return;
@@ -483,9 +571,9 @@ public static class Glyphs {
 
             if (type == LowRegeneration) {
                 if (first) {
-                    HexIndex bowlA = (part.method_1184(LowRegenerationBowlA));
-                    HexIndex bowlB = (part.method_1184(LowRegenerationBowlB));
-                    HexIndex iris = (part.method_1184(LowRegenerationOutput));
+                    HexIndex bowlA = part.method_1184(LowRegenerationBowlA);
+                    HexIndex bowlB = part.method_1184(LowRegenerationBowlB);
+                    HexIndex iris = part.method_1184(LowRegenerationOutput);
 
                     if (sim.FindAtom(iris).method_1085()) { //iris full
                         return;
@@ -508,18 +596,78 @@ public static class Glyphs {
                 }
             }
 
-            if (type == Translation) {
-                if (first) {
-                    HexIndex bowl = (part.method_1184(TranslationBowl));
-                    if (!sim.FindAtom(bowl).method_99(out AtomReference bowlAtom)) { //empty bowl
+            if (type == Translation)
+            {
+                if (first)
+                {
+                    HexIndex bowl = part.method_1184(TranslationBowl);
+                    if (!sim.FindAtom(bowl).method_99(out AtomReference bowlAtom))
+                    { //empty bowl
                         return;
                     }
-                    if (!GlyphLUT.TranslationLUT.TryGetValue(bowlAtom.field_2280, out AtomType output)) {
+                    if (!GlyphLUT.TranslationLUT.TryGetValue(bowlAtom.field_2280, out AtomType output))
+                    {
                         return;
                     }
 
                     Brimstone.API.ChangeAtom(bowlAtom, output);
                     bowlAtom.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowlAtom.field_2280, class_238.field_1989.field_81.field_614, 30f);
+                }
+            }
+
+            if (type == Sacrifice)
+            {
+                HexIndex io = part.method_1184(SacrificeIO);
+
+                // init dyn
+                // Logger.Log("init dyn");
+                var pss_dyn = new DynamicData(pss);
+                var stateOb = pss_dyn.Get(SacrificeStateField);
+                SacrificeState state = new(0b11000000);
+                if (stateOb != null)
+                {
+                    state = (SacrificeState)stateOb;
+                }
+
+                // Logger.Log("check");
+                int MorsCount = state.MorsCount;
+                state.ConsumingMors = false;
+                if (first)
+                {
+                    // Logger.Log("check eat");
+                    if (sim.FindAtom(io).method_99(out AtomReference ioAtom)) // if atom above...
+                    {
+                        if (ioAtom.field_2280 == Brimstone.API.VanillaAtoms.mors // ...is mors...
+                            && !ioAtom.field_2281 // ...and not bonded...
+                            && !ioAtom.field_2282 // ...and not held
+                            && MorsCount < 6)
+                        {
+                            // Logger.Log("eat mors");
+                            MorsCount++;
+                            Brimstone.API.RemoveAtom(ioAtom);
+                            state.ConsumingMors = true; // mark renderer to render mors consumption
+                        }
+                    }
+                    // Logger.Log("check sacrifice");
+                    if (!sim.FindAtom(io).method_1085() // if no atom above...
+                        && MorsCount == 6 // ... and sufficient souls ...
+                        && sim.method_1820().method_852(sim.method_1818(), part, out Maybe<int> _).field_2548 == (enum_144)5) // ... and curr instr is grab or drop...
+                    {
+                        // Logger.Log("sacrifice your loved ones");
+                        MorsCount = 0;
+                        pss.field_2743 = true;
+                    }
+
+                    // Logger.Log("update state");
+                    state.MorsCount = (byte)MorsCount;
+                    // Logger.Log("write");
+                    pss_dyn.Set(SacrificeStateField, state);
+                    // Logger.Log("done check");
+                }
+                else if (pss.field_2743)
+                {
+                    // Logger.Log("print your sacrifice");
+                    Brimstone.API.AddAtom(sim, part, SacrificeIO, Atoms.sixteen);
                 }
             }
         });
