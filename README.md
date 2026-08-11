@@ -66,9 +66,8 @@ Translation: translates via bowl using the following table as a bijective map:
 
 Sacrifice: There is no glyph of Sacrifice. There are only five glyphs.
 <details><summary></summary>
-    > This is a test commit. 
+    > Sacrifice the souls of your loved ones for the guise of immortality. 666 souls or 6 mors required. 
 </details>
-
 # Flemming's Wheel
 
 Flemming's wheel consists of the identity element (1), and elements 11 and 12 in the following arrangement:
