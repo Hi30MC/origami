@@ -639,11 +639,10 @@ public static class Glyphs {
                     {
                         if (ioAtom.field_2280 == Brimstone.API.VanillaAtoms.mors // ...is mors...
                             && !ioAtom.field_2281 // ...and not bonded...
-                            && !ioAtom.field_2282 // ...and not held
-                            && MorsCount < 6)
+                            && !ioAtom.field_2282) // ...and not held
                         {
-                            // Logger.Log("eat mors");
-                            MorsCount++;
+                        // Logger.Log("eat mors");
+                            if (MorsCount < 6) MorsCount++;
                             Brimstone.API.RemoveAtom(ioAtom);
                             state.ConsumingMors = true; // mark renderer to render mors consumption
                         }
