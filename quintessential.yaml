@@ -1,5 +1,5 @@
 Name: Origami
-Version: 1.1.0
+Version: 1.2.0
 DLL: "origami.dll"
 Dependencies:
   - Name: Quintessential
