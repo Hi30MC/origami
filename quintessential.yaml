@@ -3,7 +3,7 @@ Version: 1.2.0
 DLL: "origami.dll"
 Dependencies:
   - Name: Quintessential
-    Version: 0.6.1
+    Version: 0.6.2
   - Name: Brimstone
     Version: 2.2.0
 OptionalDependencies:
