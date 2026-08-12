@@ -11,6 +11,7 @@ public class Origami: QuintessentialMod {
     public const string SacrificePermission = "Origami:Sacrifice";
 
     public static bool NeuvolicsLoaded = Brimstone.API.IsModLoaded("Neuvolics");
+    public static bool SennmetalsLoaded = Brimstone.API.IsModLoaded("Sennmetals");
 
     public override void Load () {
         Logger.Log("Origami: Paper ready to fold!");
@@ -35,10 +36,9 @@ public class Origami: QuintessentialMod {
         QApi.AddPuzzlePermission(FlemmingPermission, "Flemming's Wheel", "Origami");
         QApi.AddPuzzlePermission(SacrificePermission, "Glyph of Sacrifice", "Origami");
 
-        if (NeuvolicsLoaded) {
-            ImportManager.ImportNeuvolics();
-            QApi.AddPuzzlePermission(TranslationPermission, "Glyph of Translation", "Origami");
-        }
+        if (NeuvolicsLoaded) ImportManager.ImportNeuvolics();
+        if (SennmetalsLoaded) ImportManager.ImportSennmetals();
+        if (NeuvolicsLoaded || SennmetalsLoaded) QApi.AddPuzzlePermission(TranslationPermission, "Glyph of Translation", "Origami");
 
         GlyphLUT.GenerateLUTs();
         Logger.Log("Origami: Assets loaded :3c");

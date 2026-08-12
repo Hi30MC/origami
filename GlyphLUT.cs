@@ -256,5 +256,16 @@ public static class GlyphLUT {
             TranslationLUT.Add(Atoms.nineteen, ImportManager.NeuvolicsAtoms.GetAzulum());
             TranslationLUT.Add(Atoms.id, ImportManager.NeuvolicsAtoms.GetZephiron());
         }
+
+        if (Origami.SennmetalsLoaded) {
+            TranslationLUT.Add(ImportManager.SennmetalsAtoms.GetEitros(), Atoms.twelve);
+            TranslationLUT.Add(ImportManager.SennmetalsAtoms.GetSordi(), Atoms.eight);
+            TranslationLUT.Add(ImportManager.SennmetalsAtoms.GetRofor(), Atoms.nineteen);
+            TranslationLUT.Add(ImportManager.SennmetalsAtoms.GetSerket(), Atoms.eleven);
+            TranslationLUT.Add(Atoms.twelve, ImportManager.SennmetalsAtoms.GetEitros());
+            TranslationLUT.Add(Atoms.eight, ImportManager.SennmetalsAtoms.GetSordi());
+            TranslationLUT.Add(Atoms.nineteen, ImportManager.SennmetalsAtoms.GetRofor());
+            TranslationLUT.Add(Atoms.eleven, ImportManager.SennmetalsAtoms.GetSerket());
+        }
     }
 }
