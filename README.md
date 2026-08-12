@@ -129,17 +129,14 @@ The rows are the left input (a) and the columns are the right input (b). This ta
 
 These are bijective (both ways) maps.
 
-| Neuvolic | Orimetal |
-|:--------:|:-------:|
-| Zephiron |   Rei   |
-|  Mitrum  |  Nazum  |
-|  Iridium |  Reyja  |
-|  Azulum  |   Maru  |
-|  Taceum  |   Lua   |
-
-| Sennmetal | Orimetal |
-|:---------:|:--------:|
-|   Sordi   |  Zaryan  |
-|   Eitros  |   Tano   |
-|   Rofor   |   Lono   |
-|   Serket  |   Iaso   |
+| Senneumetal | Orimetal |
+|:-----------:|:--------:|
+|   Zephiron  |    Rei   |
+|   Mitrum    |   Nazum  |
+|   Iridium   |   Reyja  |
+|   Azulum    |   Maru   |
+|   Taceum    |    Lua   |
+|    Sordi    |  Zaryan  |
+|   Eitros    |   Tano   |
+|    Rofor    |   Lono   |
+|   Serket    |   Iaso   |
