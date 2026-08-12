@@ -57,13 +57,17 @@ Low Retrieval: takes f, g as bowls, outputs D(f, g).
 
 Translation: translates via bowl using the following table as a bijective map:
 
-| Neuvolic | orimetal |
-|:--------:|:-------:|
-| Zephiron |   Rei   |
-|  Mitrum  |  Nazum  |
-|  Iridium |  Reyja  |
-|  Azulum  |   Maru  |
-|  Taceum  |   Lua   |
+| Senneumetal | Orimetal |
+|:-----------:|:--------:|
+|   Zephiron  |    Rei   |
+|   Mitrum    |   Nazum  |
+|   Iridium   |   Reyja  |
+|   Azulum    |   Maru   |
+|   Taceum    |    Lua   |
+|    Sordi    |  Zaryan  |
+|   Eitros    |   Tano   |
+|    Rofor    |   Lono   |
+|   Serket    |   Iaso   |
 
 Sacrifice: There is no glyph of Sacrifice. There are only five glyphs. 
 <details><summary></summary> Sacrifice the souls of your loved ones for the guise of immortality. 666 souls or 6 mors required. </details>
