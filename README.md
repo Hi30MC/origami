@@ -65,8 +65,7 @@ Translation: translates via bowl using the following table as a bijective map:
 |  Azulum  |   Maru  |
 |  Taceum  |   Lua   |
 
-Sacrifice: There is no glyph of Sacrifice. There are only five glyphs.
-<details><summary></summary> Sacrifice the souls of your loved ones for the guise of immortality. 666 souls or 6 mors required. </details>
+Sacrifice: There is no glyph of Sacrifice. There are only five glyphs. <details><summary></summary> Sacrifice the souls of your loved ones for the guise of immortality. 666 souls or 6 mors required. </details>
 
 # Flemming's Wheel
 
