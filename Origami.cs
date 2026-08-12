@@ -37,7 +37,7 @@ public class Origami: QuintessentialMod {
         QApi.AddPuzzlePermission(SacrificePermission, "Glyph of Sacrifice", "Origami");
 
         if (NeuvolicsLoaded) ImportManager.ImportNeuvolics();
-        if (SennmetalsLoaded) ImportManager.ImportSennmetals();
+        if (SennmetalsLoaded) {ImportManager.ImportSennmetals(); Logger.Log("loaded sennmetals");}
         if (NeuvolicsLoaded || SennmetalsLoaded) QApi.AddPuzzlePermission(TranslationPermission, "Glyph of Translation", "Origami");
 
         GlyphLUT.GenerateLUTs();

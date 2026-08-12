@@ -253,7 +253,7 @@ public static class GlyphLUT {
             TranslationLUT.Add(Atoms.four, ImportManager.NeuvolicsAtoms.GetIridium());
             TranslationLUT.Add(Atoms.three, ImportManager.NeuvolicsAtoms.GetMitrum());
             TranslationLUT.Add(Atoms.twenty, ImportManager.NeuvolicsAtoms.GetTaceum());
-            TranslationLUT.Add(Atoms.nineteen, ImportManager.NeuvolicsAtoms.GetAzulum());
+            TranslationLUT.Add(Atoms.fifteen, ImportManager.NeuvolicsAtoms.GetAzulum());
             TranslationLUT.Add(Atoms.id, ImportManager.NeuvolicsAtoms.GetZephiron());
         }
 

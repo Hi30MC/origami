@@ -598,7 +598,7 @@ public static class Glyphs {
 
             if (type == Translation)
             {
-                if (first)
+                if (!first)
                 {
                     HexIndex bowl = part.method_1184(TranslationBowl);
                     if (!sim.FindAtom(bowl).method_99(out AtomReference bowlAtom))

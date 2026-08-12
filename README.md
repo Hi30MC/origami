@@ -125,12 +125,19 @@ The rows are the left input (a) and the columns are the right input (b). This ta
 
 ### Glyph of Translation Table
 
-This is a bijective (both ways) map.
+These are bijective (both ways) maps.
 
-| Neuvolic | orimetal |
+| Neuvolic | Orimetal |
 |:--------:|:-------:|
 | Zephiron |   Rei   |
 |  Mitrum  |  Nazum  |
 |  Iridium |  Reyja  |
 |  Azulum  |   Maru  |
 |  Taceum  |   Lua   |
+
+| Sennmetal | Orimetal |
+|:---------:|:--------:|
+|   Sordi   |  Zaryan  |
+|   Eitros  |   Tano   |
+|   Rofor   |   Lono   |
+|   Serket  |   Iaso   |
