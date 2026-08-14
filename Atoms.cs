@@ -1,11 +1,12 @@
 using Quintessential;
-using Brimstone;
 namespace Origami;
 
-public static class Atoms {
+public static class Atoms
+{
     public static AtomType id, three, four, seven, eight, eleven, twelve, fifteen, sixteen, nineteen, twenty, twentythree;
 
-    public static void LoadAtoms() {
+    public static void LoadAtoms()
+    {
         id = Brimstone.API.CreateNormalAtom(
             ID: 201,
             modName: "Origami",

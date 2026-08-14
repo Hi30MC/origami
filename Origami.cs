@@ -3,7 +3,7 @@ namespace Origami;
 
 public class Origami: QuintessentialMod {
     public const string CompositionPermission = "Origami:Composition";
-    public const string AugmentationPermission = "Origami:Augmentation";
+    public const string AugmentedCompPermission = "Origami:AugmentedComp";
     public const string HighRegenerationPermission = "Origami:HighRegeneration";
     public const string LowRegenerationPermission = "Origami:LowRegeneration";
     public const string TranslationPermission = "Origami:Translation";
@@ -30,7 +30,7 @@ public class Origami: QuintessentialMod {
         Glyphs.LoadParts();
 
         QApi.AddPuzzlePermission(CompositionPermission, "Glyph of Composition", "Origami");
-        QApi.AddPuzzlePermission(AugmentationPermission, "Glyph of Aug. Comp.", "Origami");
+        QApi.AddPuzzlePermission(AugmentedCompPermission, "Glyph of Aug. Comp.", "Origami");
         QApi.AddPuzzlePermission(HighRegenerationPermission, "Glyph of High Regen.", "Origami");
         QApi.AddPuzzlePermission(LowRegenerationPermission, "Glyph of Low Regen.", "Origami");
         QApi.AddPuzzlePermission(FlemmingPermission, "Flemming's Wheel", "Origami");

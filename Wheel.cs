@@ -131,7 +131,6 @@ public static class Wheel
         typeof(SolutionEditorBase).GetMethod("method_2005", BindingFlags.NonPublic | BindingFlags.Static).Invoke(editor, new object[] { part.method_1165(), class_191.field_1767.field_1534, class236 });
 
         // draw cages
-        PartSimState partSimState = editor.method_507().method_481(part);
         for (int i = 0; i < 6; i++)
         {
             float radians = renderer.field_1798 + (i * sixtyDegrees);
