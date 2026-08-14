@@ -527,6 +527,8 @@ public static class Glyphs
                     Brimstone.API.RemoveAtom(inputAtomB);
                     Brimstone.API.DrawFallingAtom(seb, inputAtomB);
 
+                    Brimstone.API.AddSmallCollider(sim, part, iris);
+
                     // mark glyph to render and what to output
                     pss.field_2743 = true;
                     pss.field_2744 = new AtomType[] { output };
@@ -580,6 +582,8 @@ public static class Glyphs
                     Brimstone.API.RemoveAtom(inputAtomB);
                     Brimstone.API.DrawFallingAtom(seb, inputAtomB);
 
+                    Brimstone.API.AddSmallCollider(sim, part, iris);
+
                     pss.field_2743 = true;
                     pss.field_2744 = new AtomType[] { output };
                 }
@@ -620,6 +624,8 @@ public static class Glyphs
                         return;
                     }
 
+                    Brimstone.API.AddSmallCollider(sim, part, iris);
+
                     pss.field_2743 = true;
                     pss.field_2744 = new AtomType[] { output };
                 }
@@ -654,6 +660,8 @@ public static class Glyphs
                     {
                         return;
                     }
+
+                    Brimstone.API.AddSmallCollider(sim, part, iris);
 
                     pss.field_2743 = true;
                     pss.field_2744 = new AtomType[] { output };
@@ -720,6 +728,7 @@ public static class Glyphs
                         // Logger.Log("sacrifice your loved ones");
                         MorsCount = 0;
                         pss.field_2743 = true;
+                        Brimstone.API.AddSmallCollider(sim, part, io);
                     }
 
                     // update state
