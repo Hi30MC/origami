@@ -121,8 +121,8 @@ public static class Glyphs
             cost: 20,
             glow: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/lowc_glow"),
             stroke: Brimstone.API.GetTexture("textures/select/Hi30MC/Origami/lowc_stroke"),
-            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/AugmentedComp_icon"),
-            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/AugmentedComp_icon"),
+            icon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/augmented_comp_icon"),
+            hoveredIcon: Brimstone.API.GetTexture("textures/parts/Hi30MC/Origami/augmented_comp_icon"),
             usedHexes: new HexIndex[] { AugmentedCompBowl, AugmentedCompInputA, AugmentedCompInputB, AugmentedCompOutput },
             customPermission: Origami.AugmentedCompPermission
         );
