@@ -11,6 +11,7 @@ There is no Glyph of Sacrifice. There are only five glyphs.
 Optional:
 - Neuvolics, latest
 - Sennmetals, latest
+- FTSIGCTU, latest
 
 # Atom List
 
