@@ -20,7 +20,10 @@ public class Origami: QuintessentialMod {
 
     public override void PostLoad()
     {
-        LoadMirrorRules();
+        if (FTSIGCTULoaded)
+        {
+            LoadMirrorRules();
+        }
     }
 
     public override void Unload() {
