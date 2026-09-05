@@ -27,7 +27,7 @@ Externally, they have the Following names and properties:
 |    3   |    Nazum   |  Naz. |       Naz      |   Ninazu   | Strong, undeath-type healing                  |
 |    4   |    Reyja   |  Rea. |       Rea      |   Freyja   | Colourful, healing, used in cosmetics         |
 |    7   |   Chronos  |  Chr. |      Chron     |   Chronos  | Time-like, artificial aging                   |
-|    8   |   Zaryan   |  Zar. |       Zar      |    Zarya   | Dull, mildly poisonous, dark                  |
+|    8   |   Zaryan   |  Zar. |       Zar      |    Zorya   | Dull, mildly poisonous, dark                  |
 |   11   |    Iaso    |  Iaso |       Ia       |    Iaso    | Healing, gaseous, used in remedies            |
 |   12   |    Tano    |  Tano |    Tan/Tano    |    Tano    | Weak, globular, long-term poison.             |
 |   15   |    Maru    |  Maru |    Mar/Maru    |    Maru    | Aqueous, blue, strong solvent, slight poison. |
