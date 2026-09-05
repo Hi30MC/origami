@@ -1,5 +1,5 @@
 # origami
-**Origami** is an Opus Magnum mod based off of the alternating group A₄. It takes the 12 elements and adds four glyphs that act as functions that transmute pairs into elements, as described below. The Glyph of Composition and Augmented Composition are based off of the [Cayley graph of the alternating group A₄](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>) and the Glyphs of High and Low Retrieval are based off of various subgroups of A₄. The former two lose one (1) mass per operation while the latter two add one (1) mass per operation. The Glyph of Translation translates between the Senneumetal family and the orimetals. Finally, this mod adds an equivalent to Van Berlo's wheel and at the end of this file we prove an Ex Nihilo construction of the elements.
+**Origami** is an Opus Magnum mod based off of the alternating group A₄. It takes the 12 elements and adds four glyphs that act as functions that transmute pairs into elements, as described below. The Glyph of Composition and Augmented Composition are based off of the [Cayley graph of the alternating group A₄](<https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Alternating_group_4%3B_Cayley_table%3B_numbers.svg/960px-Alternating_group_4%3B_Cayley_table%3B_numbers.svg.png>) and the Glyphs of High and Low Regeneration are based off of various subgroups of A₄. The former two lose one (1) mass per operation while the latter two add one (1) mass per operation. The Glyph of Translation translates between the Senneumetal family and the orimetals. Finally, this mod adds an equivalent to Van Berlo's wheel and at the end of this file we prove an Ex Nihilo construction of the elements.
 
 There is no Glyph of Sacrifice. There are only five glyphs.
 
@@ -53,9 +53,9 @@ Composition: takes f, g as inputs and outputs A(f, g).
 
 Augmented Composition: takes f, g as inputs, h as a bowl, then outputs B(f, g; h).
 
-High Retrieval takes f, g, h as bowls, outputs C(f, g, h).
+High Regeneration takes f, g, h as bowls, outputs C(f, g, h).
 
-Low Retrieval: takes f, g as bowls, outputs D(f, g).
+Low Regeneration: takes f, g as bowls, outputs D(f, g).
 
 Translation: translates via bowl using the following table as a bijective map:
 
