@@ -71,8 +71,8 @@ Translation: translates via bowl using the following table as a bijective map:
 |    Rofor    |   Lono   |
 |   Serket    |   Iaso   |
 
-Sacrifice: There is no glyph of Sacrifice. There are only five glyphs. 
-<details><summary></summary> Sacrifice the souls of your loved ones for the guise of immortality. 666 souls or 6 mors required. </details>
+There is no glyph of Sacrifice. There are only five glyphs.
+<details><summary></summary> Sacrifice the souls of your loved ones for the guise of immortality. Minimum 666 souls or 6 mors required. </details>
 
 # Flemming's Wheel
 
